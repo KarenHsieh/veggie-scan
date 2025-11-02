@@ -1,11 +1,15 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import UploadArea from './components/UploadArea'
+import ResultCard from './components/ResultCard'
 import { extractTextFromImage, validateImageFile, fileToDataURL } from '../../lib/ocr/tesseract'
+import { addHistory } from '../../lib/storage/history'
 
 export default function ScanPage() {
+  const searchParams = useSearchParams()
   const [inputText, setInputText] = useState('')
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [isOCRProcessing, setIsOCRProcessing] = useState(false)
@@ -14,6 +18,14 @@ export default function ScanPage() {
 
   const [result, setResult] = useState(null)
   const [error, setError] = useState(null)
+
+  // 從 URL 參數載入文字（從歷史記錄重新分析）
+  useEffect(() => {
+    const text = searchParams.get('text')
+    if (text) {
+      setInputText(decodeURIComponent(text))
+    }
+  }, [searchParams])
 
   const handleImageSelect = async (file) => {
     // 驗證圖片
@@ -54,6 +66,13 @@ export default function ScanPage() {
     }
   }
 
+  const handleReset = () => {
+    setResult(null)
+    setError(null)
+    setInputText('')
+    setUploadedImage(null)
+  }
+
   const handleTextAnalysis = async () => {
     if (!inputText.trim()) {
       alert('請輸入或貼上成分文字')
@@ -77,6 +96,11 @@ export default function ScanPage() {
 
       if (data.status === 'ok') {
         setResult(data)
+        // 儲存到歷史記錄
+        addHistory({
+          text: inputText,
+          result: data,
+        })
       } else {
         setError(data.message || '分析失敗')
       }
@@ -193,87 +217,11 @@ export default function ScanPage() {
 
           {/* Result Display */}
           {result && (
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <div className="text-center mb-6">
-                <div className="text-6xl mb-4">{result.explanation.icon}</div>
-                <h2 className="text-2xl font-bold mb-2">
-                  {result.explanation.title}
-                </h2>
-                <p className="text-gray-600">{result.summary}</p>
-              </div>
-
-              {/* Details */}
-              <div className="space-y-4">
-                {result.explanation.details.danger.length > 0 && (
-                  <div className="border-l-4 border-red-500 pl-4">
-                    <h3 className="font-semibold text-red-700 mb-2">
-                      ❌ 不可食用成分
-                    </h3>
-                    <ul className="space-y-2">
-                      {result.explanation.details.danger.map((item, idx) => (
-                        <li key={idx} className="text-sm">
-                          <span className="font-medium">{item.displayName}</span>
-                          <span className="text-gray-600"> - {item.reason}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {result.explanation.details.warning.length > 0 && (
-                  <div className="border-l-4 border-yellow-500 pl-4">
-                    <h3 className="font-semibold text-yellow-700 mb-2">
-                      ⚠️ 需確認成分
-                    </h3>
-                    <ul className="space-y-2">
-                      {result.explanation.details.warning.map((item, idx) => (
-                        <li key={idx} className="text-sm">
-                          <span className="font-medium">{item.displayName}</span>
-                          <span className="text-gray-600"> - {item.reason}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {result.explanation.details.unknown.length > 0 && (
-                  <div className="border-l-4 border-gray-500 pl-4">
-                    <h3 className="font-semibold text-gray-700 mb-2">
-                      ❓ 未知成分
-                    </h3>
-                    <ul className="space-y-2">
-                      {result.explanation.details.unknown.map((item, idx) => (
-                        <li key={idx} className="text-sm">
-                          <span className="font-medium">{item.displayName}</span>
-                          <span className="text-gray-600"> - {item.reason}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {result.explanation.details.safe.length > 0 && (
-                  <div className="border-l-4 border-green-500 pl-4">
-                    <h3 className="font-semibold text-green-700 mb-2">
-                      ✅ 可食用成分
-                    </h3>
-                    <p className="text-sm text-gray-600">
-                      共 {result.explanation.details.safe.length} 項安全成分
-                    </p>
-                  </div>
-                )}
-              </div>
-
-              <button
-                onClick={() => {
-                  setResult(null)
-                  setInputText('')
-                }}
-                className="w-full mt-6 px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors"
-              >
-                再次掃描
-              </button>
-            </div>
+            <ResultCard 
+              result={result}
+              inputText={inputText}
+              onReset={handleReset}
+            />
           )}
 
           {/* Error Display */}

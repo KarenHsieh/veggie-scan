@@ -1,10 +1,37 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { getHistory, deleteHistory, clearHistory, formatTimestamp } from '../../lib/storage/history'
 
 export default function HistoryPage() {
-  // TODO: 從 localStorage 讀取歷史記錄
-  const history = []
+  const [history, setHistory] = useState([])
+  const router = useRouter()
+
+  useEffect(() => {
+    // 載入歷史記錄
+    setHistory(getHistory())
+  }, [])
+
+  const handleDelete = (id) => {
+    if (confirm('確定要刪除這筆記錄嗎？')) {
+      deleteHistory(id)
+      setHistory(getHistory())
+    }
+  }
+
+  const handleClearAll = () => {
+    if (confirm('確定要清空所有歷史記錄嗎？')) {
+      clearHistory()
+      setHistory([])
+    }
+  }
+
+  const handleReanalyze = (text) => {
+    // 將文字帶回掃描頁面
+    router.push(`/scan?text=${encodeURIComponent(text)}`)
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -27,13 +54,23 @@ export default function HistoryPage() {
       <main className="max-w-4xl mx-auto px-4 py-8">
         <div className="space-y-6">
           {/* Title */}
-          <div>
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">
-              查詢歷史
-            </h1>
-            <p className="text-gray-600">
-              最近 10 筆查詢記錄
-            </p>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-800 mb-2">
+                查詢歷史
+              </h1>
+              <p className="text-gray-600">
+                最近 10 筆查詢記錄
+              </p>
+            </div>
+            {history.length > 0 && (
+              <button
+                onClick={handleClearAll}
+                className="px-4 py-2 text-sm text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors"
+              >
+                清空全部
+              </button>
+            )}
           </div>
 
           {/* History List */}
@@ -50,13 +87,42 @@ export default function HistoryPage() {
             </div>
           ) : (
             <div className="space-y-4">
-              {history.map((item, index) => (
+              {history.map((item) => (
                 <div
-                  key={index}
+                  key={item.id}
                   className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
                 >
-                  {/* TODO: 顯示歷史記錄內容 */}
-                  <p>歷史記錄 {index + 1}</p>
+                  <div className="flex items-start justify-between gap-4">
+                    {/* 左側：結果圖示與摘要 */}
+                    <div className="flex items-start gap-4 flex-1">
+                      <div className="text-4xl">{item.icon}</div>
+                      <div className="flex-1">
+                        <p className="text-sm text-gray-500 mb-1">
+                          {formatTimestamp(item.timestamp)}
+                        </p>
+                        <p className="text-gray-700 mb-2">{item.summary}</p>
+                        <p className="text-sm text-gray-600 line-clamp-2">
+                          {item.text}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* 右側：操作按鈕 */}
+                    <div className="flex flex-col gap-2">
+                      <button
+                        onClick={() => handleReanalyze(item.text)}
+                        className="px-4 py-2 text-sm bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors whitespace-nowrap"
+                      >
+                        重新分析
+                      </button>
+                      <button
+                        onClick={() => handleDelete(item.id)}
+                        className="px-4 py-2 text-sm text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                      >
+                        刪除
+                      </button>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
