@@ -82,11 +82,16 @@ pnpm start
   - [x] explain.js 解釋模組（生成判斷理由）
   - [x] /app/api/classify/route.js API 端點
   - [x] 整合到掃描頁面（結果顯示）
-  - [x] 單元測試 (classify)
+  - [x] 單元測試 (classify + explain)
 
 ### Week 2: OCR 整合與前端介面
 
-- [ ] Day 7-8: 前端 OCR 整合
+- [x] Day 7-8: 前端 OCR 整合
+  - [x] 安裝 tesseract.js
+  - [x] /lib/ocr/tesseract.js OCR 模組
+  - [x] UploadArea 圖片上傳元件
+  - [x] 整合到掃描頁面（拖曳上傳、進度顯示）
+  - [x] 圖片預覽與錯誤處理
 - [ ] Day 9-10: 結果顯示與歷史紀錄
 - [ ] Day 11-12: i18n + 體驗修飾
 - [ ] Day 13-14: 測試、驗證與上線

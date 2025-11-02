@@ -2,13 +2,57 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import UploadArea from './components/UploadArea'
+import { extractTextFromImage, validateImageFile, fileToDataURL } from '../../lib/ocr/tesseract'
 
 export default function ScanPage() {
   const [inputText, setInputText] = useState('')
   const [isAnalyzing, setIsAnalyzing] = useState(false)
+  const [isOCRProcessing, setIsOCRProcessing] = useState(false)
+  const [ocrProgress, setOcrProgress] = useState(0)
+  const [uploadedImage, setUploadedImage] = useState(null)
 
   const [result, setResult] = useState(null)
   const [error, setError] = useState(null)
+
+  const handleImageSelect = async (file) => {
+    // 驗證圖片
+    const validation = validateImageFile(file)
+    if (!validation.valid) {
+      setError(validation.error)
+      return
+    }
+
+    setError(null)
+    setIsOCRProcessing(true)
+    setOcrProgress(0)
+
+    try {
+      // 轉換為 Data URL 用於預覽
+      const dataURL = await fileToDataURL(file)
+      setUploadedImage(dataURL)
+
+      // 執行 OCR
+      const ocrResult = await extractTextFromImage(file, {
+        onProgress: (progress) => {
+          setOcrProgress(progress)
+        },
+      })
+
+      if (ocrResult.success) {
+        setInputText(ocrResult.text)
+        setError(null)
+      } else {
+        setError(ocrResult.error || 'OCR 辨識失敗，請嘗試手動輸入')
+      }
+    } catch (err) {
+      setError('圖片處理失敗，請稍後再試')
+      console.error('OCR error:', err)
+    } finally {
+      setIsOCRProcessing(false)
+      setOcrProgress(0)
+    }
+  }
 
   const handleTextAnalysis = async () => {
     if (!inputText.trim()) {
@@ -75,33 +119,44 @@ export default function ScanPage() {
           </div>
 
           {/* Upload Area */}
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <div className="space-y-6">
-              {/* Image Upload */}
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center hover:border-primary-500 transition-colors cursor-pointer">
-                <div className="space-y-4">
-                  <div className="text-6xl">📸</div>
-                  <div>
-                    <p className="text-lg font-semibold text-gray-700">
-                      點擊上傳圖片
-                    </p>
-                    <p className="text-sm text-gray-500 mt-1">
-                      或拖曳圖片到此處
-                    </p>
+          {!result && (
+            <div className="bg-white rounded-lg shadow-md p-8">
+              <div className="space-y-6">
+                {/* Image Upload */}
+                <UploadArea 
+                  onImageSelect={handleImageSelect}
+                  isProcessing={isOCRProcessing}
+                />
+
+                {/* OCR Progress */}
+                {isOCRProcessing && (
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-600">辨識中...</span>
+                      <span className="text-primary-600 font-semibold">
+                        {Math.round(ocrProgress * 100)}%
+                      </span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div 
+                        className="bg-primary-600 h-2 rounded-full transition-all duration-300"
+                        style={{ width: `${ocrProgress * 100}%` }}
+                      />
+                    </div>
                   </div>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    className="hidden"
-                    id="image-upload"
-                  />
-                  <label
-                    htmlFor="image-upload"
-                    className="inline-block px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors cursor-pointer"
-                  >
-                    選擇圖片
-                  </label>
-                </div>
+                )}
+
+                {/* Uploaded Image Preview */}
+                {uploadedImage && !isOCRProcessing && (
+                  <div className="space-y-2">
+                    <p className="text-sm font-semibold text-gray-700">已上傳圖片：</p>
+                    <img 
+                      src={uploadedImage} 
+                      alt="Uploaded" 
+                      className="max-h-48 mx-auto rounded-lg border border-gray-200"
+                    />
+                  </div>
+                )}
               </div>
 
               {/* Divider */}
@@ -134,7 +189,7 @@ export default function ScanPage() {
                 </button>
               </div>
             </div>
-          </div>
+          )}
 
           {/* Result Display */}
           {result && (
