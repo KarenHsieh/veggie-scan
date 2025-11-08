@@ -99,7 +99,12 @@ pnpm start
   - [x] 歷史記錄頁面
   - [x] 再掃一次、複製文字功能
   - [x] 從歷史記錄重新分析
-- [ ] Day 11-12: i18n + 體驗修飾
+- [x] Day 11-12: OCR 語言支援規劃 + 體驗修飾
+  - [x] 確認 Tesseract.js 支援繁體中文 + 英文
+  - [x] 預留日文 OCR 擴充架構
+  - [x] 介面固定為繁體中文（無語言切換）
+  - [x] Loading/Empty/Error 狀態元件
+  - [x] 文件說明更新
 - [ ] Day 13-14: 測試、驗證與上線
 
 ---
@@ -108,6 +113,9 @@ pnpm start
 
 - **前端**: Next.js 16 (App Router) + React 19 + Tailwind CSS
 - **OCR**: Tesseract.js（前端）
+  - 支援語言：繁體中文（chi_tra）+ 英文（eng）
+  - 架構預留：日文（jpn）擴充支援
+- **介面語言**: 繁體中文（固定，無語言切換）
 - **資料層**: JSON 檔案（MVP 階段）
 - **部署**: Zeabur
 - **測試**: Vitest + Playwright
