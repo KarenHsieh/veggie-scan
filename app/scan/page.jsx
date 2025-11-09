@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import UploadArea from './components/UploadArea'
@@ -8,7 +8,7 @@ import ResultCard from './components/ResultCard'
 import { extractTextFromImage, validateImageFile, fileToDataURL } from '../../lib/ocr/tesseract'
 import { addHistory } from '../../lib/storage/history'
 
-export default function ScanPage() {
+function ScanPageContent() {
   const searchParams = useSearchParams()
   const [inputText, setInputText] = useState('')
   const [isAnalyzing, setIsAnalyzing] = useState(false)
@@ -252,5 +252,20 @@ export default function ScanPage() {
         </div>
       </main>
     </div>
+  )
+}
+
+export default function ScanPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">載入中...</p>
+        </div>
+      </div>
+    }>
+      <ScanPageContent />
+    </Suspense>
   )
 }
