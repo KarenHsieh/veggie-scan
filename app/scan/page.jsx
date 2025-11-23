@@ -7,6 +7,7 @@ import UploadArea from "./components/UploadArea";
 import ResultCard from "./components/ResultCard";
 import { extractTextFromImage, validateImageFile, fileToDataURL } from "../../lib/ocr/tesseract";
 import { addHistory } from "../../lib/storage/history";
+import { filterExtractedIngredients } from "../../lib/utils/filterNonIngredients";
 
 const AI_FILTER_ENABLED = process.env.NEXT_PUBLIC_AI_FILTER_ENABLED === "true";
 
@@ -108,61 +109,21 @@ function ScanPageContent() {
           if (filterResponse.ok) {
             const filterData = await filterResponse.json();
 
-            // 防禦性過濾：移除明顯的非成分前綴
-            const nonIngredientPrefixes = [
-              "品名",
-              "產品",
-              "商品",
-              "名稱",
-              "成分",
-              "原料",
-              "配料",
-              "淨重",
-              "重量",
-              "容量",
-              "內容量",
-              "保存期限",
-              "有效日期",
-              "製造日期",
-              "製造商",
-              "公司",
-              "廠商",
-              "出品",
-              "客服",
-              "電話",
-              "地址",
-              "條碼",
-            ];
+            // 使用工具函數進行防禦性過濾：移除明顯的非成分前綴
+            const { ingredients, nonIngredients: filteredNonIngredients } = filterExtractedIngredients(
+              filterData.extracted || []
+            );
 
-            const extracted = Array.isArray(filterData.extracted)
-              ? filterData.extracted.filter((t) => {
-                  if (!t || !t.trim()) return false;
-
-                  // 檢查是否以非成分前綴開頭
-                  const hasNonIngredientPrefix = nonIngredientPrefixes.some(
-                    (prefix) => t.includes(prefix + "：") || t.includes(prefix + ":") || t.startsWith(prefix)
-                  );
-
-                  if (hasNonIngredientPrefix) {
-                    // 將這些項目加入 nonIngredients
-                    setNonIngredients((prev) => [...prev, t]);
-                    return false;
-                  }
-
-                  return true;
-                })
-              : [];
-
-            if (extracted.length > 0) {
+            if (ingredients.length > 0) {
               // 由 AI 明確標記的成分清單，作為唯一的分類輸入
-              textToClassify = extracted.join("、");
+              textToClassify = ingredients.join("、");
             } else if (filterData.ingredientsText && filterData.ingredientsText.trim()) {
               // 若沒有 extracted，但仍有 ingredientsText，則退回使用整段成分文字
               textToClassify = filterData.ingredientsText;
             }
 
-            // 由 AI 回傳的非成分示例，直接交給前端顯示
-            setNonIngredients((prev) => [...prev, ...(filterData.nonIngredientsExamples || [])]);
+            // 合併 AI 回傳的非成分示例和前端過濾出的非成分項目
+            setNonIngredients([...(filterData.nonIngredientsExamples || []), ...filteredNonIngredients]);
           }
         } catch (err) {
           console.error("AI filter error:", err);
