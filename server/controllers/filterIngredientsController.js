@@ -46,6 +46,13 @@ export async function postFilterIngredients(req) {
   // 先嘗試 AI 過濾
   const aiResult = await filterIngredientsWithGemini(ocrText, { locale });
 
+  // Debug: 印出 AI 回傳結果
+  console.log("=== AI Filter Result ===");
+  console.log("_fallback:", aiResult?._fallback);
+  console.log("extracted:", JSON.stringify(aiResult?.extracted, null, 2));
+  console.log("nonIngredientsExamples:", JSON.stringify(aiResult?.nonIngredientsExamples, null, 2));
+  console.log("========================");
+
   if (!aiResult || aiResult._fallback) {
     const ruleResult = ruleBasedFilter(ocrText || "");
     return Response.json(ruleResult, { status: 200 });
