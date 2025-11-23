@@ -1,0 +1,118 @@
+[
+  {
+    "name": "明膠",
+    "aliases": [
+      "明膠",
+      "吉利丁",
+      "gelatin"
+    ],
+    "category": "膠凝劑"
+  },
+  {
+    "name": "魚膠",
+    "aliases": [
+      "魚膠",
+      "魚鰾膠",
+      "isinglass"
+    ],
+    "category": "膠凝劑"
+  },
+  {
+    "name": "胭脂紅",
+    "aliases": [
+      "胭脂紅",
+      "胭脂蟲紅",
+      "carmine",
+      "cochineal",
+      "E120"
+    ],
+    "category": "色素"
+  },
+  {
+    "name": "紫膠",
+    "aliases": [
+      "紫膠",
+      "蟲膠",
+      "shellac",
+      "E904"
+    ],
+    "category": "上光劑"
+  },
+  {
+    "name": "蜂蠟",
+    "aliases": [
+      "蜂蠟",
+      "beeswax",
+      "E901"
+    ],
+    "category": "上光劑"
+  },
+  {
+    "name": "膠原蛋白",
+    "aliases": [
+      "膠原蛋白",
+      "collagen"
+    ],
+    "category": "膠凝劑"
+  },
+  {
+    "name": "阿膠",
+    "aliases": [
+      "阿膠",
+      "ejiao"
+    ],
+    "category": "膠凝劑"
+  },
+  {
+    "name": "魚露",
+    "aliases": [
+      "魚露",
+      "fish sauce"
+    ],
+    "category": "調味料"
+  },
+  {
+    "name": "柴魚粉",
+    "aliases": [
+      "柴魚粉",
+      "柴魚",
+      "bonito powder"
+    ],
+    "category": "調味料"
+  },
+  {
+    "name": "蟹色素",
+    "aliases": [
+      "蟹色素",
+      "蝦色素",
+      "E160"
+    ],
+    "category": "色素"
+  },
+  {
+    "name": "骨頭磷酸鹽",
+    "aliases": [
+      "骨頭磷酸鹽",
+      "bone phosphate",
+      "E542"
+    ],
+    "category": "添加物"
+  },
+  {
+    "name": "甲壳素",
+    "aliases": [
+      "甲殼素",
+      "甲壳素",
+      "chitosan"
+    ],
+    "category": "纖維"
+  },
+  {
+    "name": "凝乳酶",
+    "aliases": [
+      "凝乳酶",
+      "rennet"
+    ],
+    "category": "酵素"
+  }
+]

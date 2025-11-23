@@ -20,7 +20,8 @@
     "next": "^16.0.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "tesseract.js": "^5.0.4"
+    "tesseract.js": "^5.0.4",
+    "@google/generative-ai": "^0.21.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.1",

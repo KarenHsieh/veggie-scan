@@ -1,116 +1,146 @@
-'use client'
+"use client";
 
-import { useState, useEffect, Suspense } from 'react'
-import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
-import UploadArea from './components/UploadArea'
-import ResultCard from './components/ResultCard'
-import { extractTextFromImage, validateImageFile, fileToDataURL } from '../../lib/ocr/tesseract'
-import { addHistory } from '../../lib/storage/history'
+import { useState, useEffect, Suspense } from "react";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import UploadArea from "./components/UploadArea";
+import ResultCard from "./components/ResultCard";
+import { extractTextFromImage, validateImageFile, fileToDataURL } from "../../lib/ocr/tesseract";
+import { addHistory } from "../../lib/storage/history";
+
+const AI_FILTER_ENABLED = process.env.NEXT_PUBLIC_AI_FILTER_ENABLED === "true";
 
 function ScanPageContent() {
-  const searchParams = useSearchParams()
-  const [inputText, setInputText] = useState('')
-  const [isAnalyzing, setIsAnalyzing] = useState(false)
-  const [isOCRProcessing, setIsOCRProcessing] = useState(false)
-  const [ocrProgress, setOcrProgress] = useState(0)
-  const [uploadedImage, setUploadedImage] = useState(null)
+  const searchParams = useSearchParams();
+  const [inputText, setInputText] = useState("");
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [isOCRProcessing, setIsOCRProcessing] = useState(false);
+  const [ocrProgress, setOcrProgress] = useState(0);
+  const [uploadedImage, setUploadedImage] = useState(null);
 
-  const [result, setResult] = useState(null)
-  const [error, setError] = useState(null)
+  const [result, setResult] = useState(null);
+  const [error, setError] = useState(null);
 
   // 從 URL 參數載入文字（從歷史記錄重新分析）
   useEffect(() => {
-    const text = searchParams.get('text')
+    const text = searchParams.get("text");
     if (text) {
-      setInputText(decodeURIComponent(text))
+      setInputText(decodeURIComponent(text));
     }
-  }, [searchParams])
+  }, [searchParams]);
 
   const handleImageSelect = async (file) => {
     // 驗證圖片
-    const validation = validateImageFile(file)
+    const validation = validateImageFile(file);
     if (!validation.valid) {
-      setError(validation.error)
-      return
+      setError(validation.error);
+      return;
     }
 
-    setError(null)
-    setIsOCRProcessing(true)
-    setOcrProgress(0)
+    setError(null);
+    setIsOCRProcessing(true);
+    setOcrProgress(0);
 
     try {
       // 轉換為 Data URL 用於預覽
-      const dataURL = await fileToDataURL(file)
-      setUploadedImage(dataURL)
+      const dataURL = await fileToDataURL(file);
+      setUploadedImage(dataURL);
 
       // 執行 OCR
       const ocrResult = await extractTextFromImage(file, {
         onProgress: (progress) => {
-          setOcrProgress(progress)
+          setOcrProgress(progress);
         },
-      })
+      });
 
       if (ocrResult.success) {
-        setInputText(ocrResult.text)
-        setError(null)
+        setInputText(ocrResult.text);
+        setError(null);
       } else {
-        setError(ocrResult.error || 'OCR 辨識失敗，請嘗試手動輸入')
+        setError(ocrResult.error || "OCR 辨識失敗，請嘗試手動輸入");
       }
     } catch (err) {
-      setError('圖片處理失敗，請稍後再試')
-      console.error('OCR error:', err)
+      setError("圖片處理失敗，請稍後再試");
+      console.error("OCR error:", err);
     } finally {
-      setIsOCRProcessing(false)
-      setOcrProgress(0)
+      setIsOCRProcessing(false);
+      setOcrProgress(0);
     }
-  }
+  };
 
   const handleReset = () => {
-    setResult(null)
-    setError(null)
-    setInputText('')
-    setUploadedImage(null)
-  }
+    setResult(null);
+    setError(null);
+    setInputText("");
+    setUploadedImage(null);
+  };
 
   const handleTextAnalysis = async () => {
     if (!inputText.trim()) {
-      alert('請輸入或貼上成分文字')
-      return
+      alert("請輸入或貼上成分文字");
+      return;
     }
 
-    setIsAnalyzing(true)
-    setError(null)
-    setResult(null)
+    setIsAnalyzing(true);
+    setError(null);
+    setResult(null);
 
     try {
-      const response = await fetch('/api/classify', {
-        method: 'POST',
+      let textToClassify = inputText;
+
+      // Post-OCR Filter（可由環境變數關閉）
+      if (AI_FILTER_ENABLED) {
+        try {
+          const filterResponse = await fetch("/api/filter-ingredients", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              ocrText: inputText,
+              locale: "zh",
+            }),
+          });
+
+          if (filterResponse.ok) {
+            const filterData = await filterResponse.json();
+            if (!filterData._fallback && filterData.ingredientsText) {
+              textToClassify = filterData.ingredientsText;
+            }
+          }
+        } catch (err) {
+          console.error("AI filter error:", err);
+          // 發生錯誤時直接使用原始文字
+        }
+      }
+
+      const response = await fetch("/api/classify", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ text: inputText }),
-      })
+        body: JSON.stringify({ text: textToClassify }),
+      });
 
-      const data = await response.json()
+      const data = await response.json();
 
-      if (data.status === 'ok') {
-        setResult(data)
+      if (data.status === "ok") {
+        setResult(data);
         // 儲存到歷史記錄
         addHistory({
-          text: inputText,
+          text: textToClassify,
           result: data,
-        })
+        });
       } else {
-        setError(data.message || '分析失敗')
+        setError(data.message || "分析失敗");
       }
     } catch (err) {
-      setError('網路錯誤，請稍後再試')
-      console.error('Analysis error:', err)
+      setError("網路錯誤，請稍後再試");
+      console.error("Analysis error:", err);
     } finally {
-      setIsAnalyzing(false)
+      setIsAnalyzing(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -120,10 +150,7 @@ function ScanPageContent() {
           <Link href="/" className="text-2xl font-bold text-primary-600">
             🥬 VeggieScan
           </Link>
-          <Link 
-            href="/history" 
-            className="text-gray-600 hover:text-primary-600 transition-colors"
-          >
+          <Link href="/history" className="text-gray-600 hover:text-primary-600 transition-colors">
             查看歷史
           </Link>
         </div>
@@ -134,12 +161,8 @@ function ScanPageContent() {
         <div className="space-y-6">
           {/* Title */}
           <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">
-              掃描食品成分
-            </h1>
-            <p className="text-gray-600">
-              上傳照片或直接貼上成分文字
-            </p>
+            <h1 className="text-3xl font-bold text-gray-800 mb-2">掃描食品成分</h1>
+            <p className="text-gray-600">上傳照片或直接貼上成分文字</p>
           </div>
 
           {/* Upload Area */}
@@ -147,22 +170,17 @@ function ScanPageContent() {
             <div className="bg-white rounded-lg shadow-md p-8">
               <div className="space-y-6">
                 {/* Image Upload */}
-                <UploadArea 
-                  onImageSelect={handleImageSelect}
-                  isProcessing={isOCRProcessing}
-                />
+                <UploadArea onImageSelect={handleImageSelect} isProcessing={isOCRProcessing} />
 
                 {/* OCR Progress */}
                 {isOCRProcessing && (
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-gray-600">辨識中...</span>
-                      <span className="text-primary-600 font-semibold">
-                        {Math.round(ocrProgress * 100)}%
-                      </span>
+                      <span className="text-primary-600 font-semibold">{Math.round(ocrProgress * 100)}%</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div 
+                      <div
                         className="bg-primary-600 h-2 rounded-full transition-all duration-300"
                         style={{ width: `${ocrProgress * 100}%` }}
                       />
@@ -174,9 +192,9 @@ function ScanPageContent() {
                 {uploadedImage && !isOCRProcessing && (
                   <div className="space-y-2">
                     <p className="text-sm font-semibold text-gray-700">已上傳圖片：</p>
-                    <img 
-                      src={uploadedImage} 
-                      alt="Uploaded" 
+                    <img
+                      src={uploadedImage}
+                      alt="Uploaded"
                       className="max-h-48 mx-auto rounded-lg border border-gray-200"
                     />
                   </div>
@@ -195,9 +213,7 @@ function ScanPageContent() {
 
               {/* Text Input */}
               <div className="space-y-4">
-                <label className="block text-sm font-semibold text-gray-700">
-                  直接貼上成分文字
-                </label>
+                <label className="block text-sm font-semibold text-gray-700">直接貼上成分文字</label>
                 <textarea
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
@@ -209,20 +225,14 @@ function ScanPageContent() {
                   disabled={isAnalyzing || !inputText.trim()}
                   className="w-full px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
                 >
-                  {isAnalyzing ? '分析中...' : '開始分析'}
+                  {isAnalyzing ? "分析中..." : "開始分析"}
                 </button>
               </div>
             </div>
           )}
 
           {/* Result Display */}
-          {result && (
-            <ResultCard 
-              result={result}
-              inputText={inputText}
-              onReset={handleReset}
-            />
-          )}
+          {result && <ResultCard result={result} inputText={inputText} onReset={handleReset} />}
 
           {/* Error Display */}
           {error && (
@@ -237,9 +247,7 @@ function ScanPageContent() {
               <div className="flex items-start space-x-3">
                 <div className="text-2xl">💡</div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-blue-900 mb-1">
-                    使用提示
-                  </h3>
+                  <h3 className="font-semibold text-blue-900 mb-1">使用提示</h3>
                   <ul className="text-sm text-blue-800 space-y-1">
                     <li>• 請確保照片清晰，成分表文字可辨識</li>
                     <li>• 支援中文與英文成分辨識</li>
@@ -252,20 +260,22 @@ function ScanPageContent() {
         </div>
       </main>
     </div>
-  )
+  );
 }
 
 export default function ScanPage() {
   return (
-    <Suspense fallback={
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">載入中...</p>
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
+            <p className="text-gray-600">載入中...</p>
+          </div>
         </div>
-      </div>
-    }>
+      }
+    >
       <ScanPageContent />
     </Suspense>
-  )
+  );
 }

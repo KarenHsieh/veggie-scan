@@ -265,6 +265,7 @@ pnpm test:e2e:report
 - [MVP v1.0 交付清單.md](./doc/MVP%20v1.0%20交付清單.md) - 功能規格與驗收標準
 - [MVP v1.0 開發順序.md](./doc/MVP%20v1.0%20開發順序.md) - 詳細開發步驟
 
+
 ---
 
 ## 🚀 部署
@@ -277,7 +278,24 @@ pnpm test:e2e:report
 
 ### 環境變數
 
-目前 MVP 階段無需額外環境變數。
+MVP v1.0 可在**無環境變數**下運作；若要啟用 v1.1 的 Post-OCR AI Filter，建議設定：
+
+```env
+# Gemini API（金鑰）
+GEMINI_API_KEY=your_gemini_api_key
+
+# Post-OCR Filter 設定
+AI_FILTER_PROVIDER=gemini
+AI_FILTER_MODEL=gemini-2.5-flash-lite
+AI_FILTER_TIMEOUT_MS=2500
+
+# 前端開關：是否啟用 Post-OCR Filter
+NEXT_PUBLIC_AI_FILTER_ENABLED=true
+```
+
+說明：
+- 將 `NEXT_PUBLIC_AI_FILTER_ENABLED` 設為 `false` 或移除，系統會直接使用原始 OCR/輸入文字進入 `/api/classify`（關閉 AI Filter）。
+- 調整 `AI_FILTER_MODEL` 可切換不同 Gemini 模型；未來若支援其他 Provider，亦可透過 `AI_FILTER_PROVIDER` 切換實作（詳見 `doc/Gemini 串接實作指南（Post-OCR Filter）.md`）。
 
 ### Docker 部署（可選）
 
@@ -296,9 +314,6 @@ docker run -p 3000:3000 veggiescan
 - [ ] 日文 OCR 支援
 - [ ] 擴充成分資料庫（1000+ 條）
 - [ ] 使用者回報機制
-- [ ] 雲端同步功能（可選）
-- [ ] PWA 離線支援
-- [ ] 多國語言介面（可選）
 
 ---
 
