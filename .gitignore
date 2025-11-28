@@ -25,6 +25,9 @@
 .qodo/
 .cursor/
 
+# AI cache
+/cache/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
@@ -55,3 +58,5 @@ Thumbs.db
 
 # deployment
 /doc
+data/*
+/scripts
