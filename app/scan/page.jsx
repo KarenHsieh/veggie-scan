@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import UploadArea from "./components/UploadArea";
 import ResultCard from "./components/ResultCard";
-import { extractTextFromImage, validateImageFile, fileToDataURL } from "../../lib/ocr/tesseract";
+import { extractTextFromImage, validateImageFile, fileToDataURL } from "../../lib/ocr";
 import { addHistory } from "../../lib/storage/history";
 import { filterExtractedIngredients } from "../../lib/utils/filterNonIngredients";
 
