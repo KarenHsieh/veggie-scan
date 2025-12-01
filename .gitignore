@@ -59,3 +59,4 @@ Thumbs.db
 # deployment
 /doc
 /scripts
+*.backup

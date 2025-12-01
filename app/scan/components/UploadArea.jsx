@@ -54,7 +54,6 @@ export default function UploadArea({ onImageSelect, isProcessing }) {
         ref={fileInputRef}
         type="file"
         accept="image/*"
-        capture="environment"
         onChange={handleFileChange}
         className="hidden"
         disabled={isProcessing}
