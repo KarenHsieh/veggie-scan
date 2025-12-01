@@ -58,5 +58,4 @@ Thumbs.db
 
 # deployment
 /doc
-data/*
 /scripts

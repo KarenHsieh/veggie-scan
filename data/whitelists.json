@@ -1,0 +1,564 @@
+[
+  {
+    "name": "水",
+    "aliases": [
+      "水",
+      "飲用水",
+      "water"
+    ],
+    "category": "基礎"
+  },
+  {
+    "name": "糖",
+    "aliases": [
+      "糖",
+      "蔗糖",
+      "白糖",
+      "sugar"
+    ],
+    "category": "甜味劑"
+  },
+  {
+    "name": "鹽",
+    "aliases": [
+      "鹽",
+      "食鹽",
+      "salt"
+    ],
+    "category": "調味料"
+  },
+  {
+    "name": "海苔",
+    "aliases": [
+      "海苔",
+      "紫菜",
+      "nori",
+      "seaweed",
+      "laver"
+    ],
+    "category": "海藻"
+  },
+  {
+    "name": "玉米",
+    "aliases": [
+      "玉米",
+      "corn",
+      "maize"
+    ],
+    "category": "穀物"
+  },
+  {
+    "name": "地瓜粉",
+    "aliases": [
+      "地瓜粉",
+      "sweet potato starch"
+    ],
+    "category": "澱粉"
+  },
+  {
+    "name": "花椒粉",
+    "aliases": [
+      "花椒粉",
+      "花椒",
+      "Sichuan pepper powder",
+      "Sichuan pepper"
+    ],
+    "category": "香料"
+  },
+  {
+    "name": "大豆油",
+    "aliases": [
+      "大豆油",
+      "黃豆油",
+      "沙拉油",
+      "soybean oil"
+    ],
+    "category": "油脂"
+  },
+  {
+    "name": "大茴香",
+    "aliases": [
+      "大茴香",
+      "八角",
+      "star anise"
+    ],
+    "category": "香料"
+  },
+  {
+    "name": "小茴香",
+    "aliases": [
+      "小茴香",
+      "茴香",
+      "fennel seed"
+    ],
+    "category": "香料"
+  },
+  {
+    "name": "五香粉",
+    "aliases": [
+      "五香粉",
+      "five-spice powder"
+    ],
+    "category": "香料"
+  },
+  {
+    "name": "辣椒",
+    "aliases": [
+      "辣椒",
+      "辣椒粉",
+      "chili",
+      "paprika",
+      "red pepper"
+    ],
+    "category": "香料"
+  },
+  {
+    "name": "胡椒",
+    "aliases": [
+      "胡椒",
+      "胡椒粉",
+      "黑胡椒",
+      "白胡椒",
+      "pepper",
+      "black pepper",
+      "white pepper"
+    ],
+    "category": "香料"
+  },
+  {
+    "name": "肉桂",
+    "aliases": [
+      "肉桂",
+      "桂皮",
+      "cinnamon"
+    ],
+    "category": "香料"
+  },
+  {
+    "name": "丁香",
+    "aliases": [
+      "丁香",
+      "clove"
+    ],
+    "category": "香料"
+  },
+  {
+    "name": "孜然",
+    "aliases": [
+      "孜然",
+      "cumin"
+    ],
+    "category": "香料"
+  },
+  {
+    "name": "薑黃",
+    "aliases": [
+      "薑黃",
+      "薑黃粉",
+      "turmeric"
+    ],
+    "category": "香料"
+  },
+  {
+    "name": "羅勒",
+    "aliases": [
+      "羅勒",
+      "九層塔",
+      "basil"
+    ],
+    "category": "香料"
+  },
+  {
+    "name": "迷迭香",
+    "aliases": [
+      "迷迭香",
+      "rosemary"
+    ],
+    "category": "香料"
+  },
+  {
+    "name": "百里香",
+    "aliases": [
+      "百里香",
+      "thyme"
+    ],
+    "category": "香料"
+  },
+  {
+    "name": "月桂葉",
+    "aliases": [
+      "月桂葉",
+      "bay leaf"
+    ],
+    "category": "香料"
+  },
+  {
+    "name": "咖哩粉",
+    "aliases": [
+      "咖哩粉",
+      "curry powder"
+    ],
+    "category": "香料"
+  },
+  {
+    "name": "棕櫚油",
+    "aliases": [
+      "棕櫚油",
+      "palm oil"
+    ],
+    "category": "油脂"
+  },
+  {
+    "name": "葵花油",
+    "aliases": [
+      "葵花油",
+      "sunflower oil"
+    ],
+    "category": "油脂"
+  },
+  {
+    "name": "芝麻油",
+    "aliases": [
+      "芝麻油",
+      "香油",
+      "sesame oil"
+    ],
+    "category": "油脂"
+  },
+  {
+    "name": "橄欖油",
+    "aliases": [
+      "橄欖油",
+      "olive oil"
+    ],
+    "category": "油脂"
+  },
+  {
+    "name": "玉米油",
+    "aliases": [
+      "玉米油",
+      "corn oil"
+    ],
+    "category": "油脂"
+  },
+  {
+    "name": "椰子油",
+    "aliases": [
+      "椰子油",
+      "coconut oil"
+    ],
+    "category": "油脂"
+  },
+  {
+    "name": "醬油",
+    "aliases": [
+      "醬油",
+      "soy sauce"
+    ],
+    "category": "調味料"
+  },
+  {
+    "name": "醋",
+    "aliases": [
+      "醋",
+      "白醋",
+      "烏醋",
+      "vinegar"
+    ],
+    "category": "調味料"
+  },
+  {
+    "name": "味精",
+    "aliases": [
+      "味精",
+      "MSG",
+      "monosodium glutamate"
+    ],
+    "category": "調味料"
+  },
+  {
+    "name": "番茄醬",
+    "aliases": [
+      "番茄醬",
+      "ketchup"
+    ],
+    "category": "調味料"
+  },
+  {
+    "name": "素高湯粉",
+    "aliases": [
+      "素高湯粉",
+      "vegetarian stock powder"
+    ],
+    "category": "調味料"
+  },
+  {
+    "name": "豆瓣醬",
+    "aliases": [
+      "豆瓣醬",
+      "辣豆瓣醬",
+      "doubanjiang"
+    ],
+    "category": "調味料"
+  },
+  {
+    "name": "甜麵醬",
+    "aliases": [
+      "甜麵醬",
+      "sweet bean paste"
+    ],
+    "category": "調味料"
+  },
+  {
+    "name": "芝麻醬",
+    "aliases": [
+      "芝麻醬",
+      "sesame paste"
+    ],
+    "category": "調味料"
+  },
+  {
+    "name": "花生醬",
+    "aliases": [
+      "花生醬",
+      "peanut butter"
+    ],
+    "category": "調味料"
+  },
+  {
+    "name": "香菇粉",
+    "aliases": [
+      "香菇粉",
+      "shiitake powder"
+    ],
+    "category": "調味料"
+  },
+  {
+    "name": "昆布粉",
+    "aliases": [
+      "昆布粉",
+      "kelp powder"
+    ],
+    "category": "調味料"
+  },
+  {
+    "name": "麥芽糊精",
+    "aliases": [
+      "麥芽糊精",
+      "maltodextrin"
+    ],
+    "category": "甜味劑"
+  },
+  {
+    "name": "葡萄糖",
+    "aliases": [
+      "葡萄糖",
+      "glucose"
+    ],
+    "category": "甜味劑"
+  },
+  {
+    "name": "果糖",
+    "aliases": [
+      "果糖",
+      "fructose"
+    ],
+    "category": "甜味劑"
+  },
+  {
+    "name": "黑糖",
+    "aliases": [
+      "黑糖",
+      "brown sugar"
+    ],
+    "category": "甜味劑"
+  },
+  {
+    "name": "麥芽糖",
+    "aliases": [
+      "麥芽糖",
+      "麥芽糖漿",
+      "maltose",
+      "malt syrup"
+    ],
+    "category": "甜味劑"
+  },
+  {
+    "name": "蒟蒻",
+    "aliases": [
+      "蒟蒻",
+      "蒟蒻粉",
+      "konjac"
+    ],
+    "category": "植物"
+  },
+  {
+    "name": "寒天",
+    "aliases": [
+      "寒天",
+      "洋菜",
+      "洋菜粉",
+      "agar",
+      "agar powder"
+    ],
+    "category": "植物"
+  },
+  {
+    "name": "果膠",
+    "aliases": [
+      "果膠",
+      "pectin"
+    ],
+    "category": "植物"
+  },
+  {
+    "name": "可可粉",
+    "aliases": [
+      "可可粉",
+      "cocoa powder"
+    ],
+    "category": "植物"
+  },
+  {
+    "name": "可可脂",
+    "aliases": [
+      "可可脂",
+      "cocoa butter"
+    ],
+    "category": "油脂"
+  },
+  {
+    "name": "米粉",
+    "aliases": [
+      "米粉",
+      "rice flour"
+    ],
+    "category": "澱粉"
+  },
+  {
+    "name": "小麥粉",
+    "aliases": [
+      "小麥粉",
+      "麵粉",
+      "wheat flour"
+    ],
+    "category": "澱粉"
+  },
+  {
+    "name": "馬鈴薯粉",
+    "aliases": [
+      "馬鈴薯粉",
+      "potato starch"
+    ],
+    "category": "澱粉"
+  },
+  {
+    "name": "木薯澱粉",
+    "aliases": [
+      "木薯澱粉",
+      "樹薯澱粉",
+      "tapioca starch"
+    ],
+    "category": "澱粉"
+  },
+  {
+    "name": "芥花油",
+    "aliases": [
+      "芥花油",
+      "菜籽油",
+      "canola oil"
+    ],
+    "category": "油脂"
+  },
+  {
+    "name": "高麗菜",
+    "aliases": [
+      "高麗菜",
+      "包心菜",
+      "甘藍",
+      "cabbage"
+    ],
+    "category": "蔬菜"
+  },
+  {
+    "name": "檸檬酸",
+    "aliases": [
+      "檸檬酸",
+      "citric acid",
+      "E330"
+    ],
+    "category": "酸味劑"
+  },
+  {
+    "name": "L-麩酸鈉",
+    "aliases": [
+      "L-麩酸鈉",
+      "味精",
+      "MSG",
+      "monosodium glutamate",
+      "麩酸鈉",
+      "l-麩酸鈉"
+    ],
+    "category": "調味料"
+  },
+  {
+    "name": "DL-蘋果酸",
+    "aliases": [
+      "DL-蘋果酸",
+      "蘋果酸",
+      "dl-蘋果酸",
+      "malic acid",
+      "E296"
+    ],
+    "category": "酸味劑"
+  },
+  {
+    "name": "水解黃豆蛋白",
+    "aliases": [
+      "水解黃豆蛋白",
+      "水解大豆蛋白",
+      "hydrolyzed soy protein"
+    ],
+    "category": "調味料"
+  },
+  {
+    "name": "蔗糖素",
+    "aliases": [
+      "蔗糖素",
+      "sucralose",
+      "E955"
+    ],
+    "category": "甜味劑"
+  },
+  {
+    "name": "辣椒紅",
+    "aliases": [
+      "辣椒紅",
+      "辣椒紅色素",
+      "辣板紅",
+      "paprika extract",
+      "E160c"
+    ],
+    "category": "色素"
+  },
+  {
+    "name": "維生素E",
+    "aliases": [
+      "維生素E",
+      "生育酚",
+      "vitamin E",
+      "tocopherol",
+      "維生素日"
+    ],
+    "category": "抗氧化劑"
+  },
+  {
+    "name": "紅椒粉",
+    "aliases": [
+      "紅椒粉",
+      "甜椒粉",
+      "red pepper powder"
+    ],
+    "category": "香料"
+  }
+]

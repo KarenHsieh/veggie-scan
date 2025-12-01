@@ -1,0 +1,2378 @@
+[
+  {
+    "name": "水",
+    "nameEn": "water",
+    "category": "基礎",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "基本成分",
+    "aliases": [
+      "water",
+      "飲用水"
+    ]
+  },
+  {
+    "name": "糖",
+    "nameEn": "sugar",
+    "category": "甜味劑",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物來源",
+    "aliases": [
+      "sugar",
+      "蔗糖",
+      "白糖"
+    ]
+  },
+  {
+    "name": "鹽",
+    "nameEn": "salt",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "礦物質",
+    "aliases": [
+      "salt",
+      "食鹽",
+      "氯化鈉"
+    ]
+  },
+  {
+    "name": "小麥粉",
+    "nameEn": "wheat flour",
+    "category": "穀物",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物來源",
+    "aliases": [
+      "wheat flour",
+      "麵粉",
+      "flour"
+    ]
+  },
+  {
+    "name": "玉米澱粉",
+    "nameEn": "corn starch",
+    "category": "穀物",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物來源",
+    "aliases": [
+      "corn starch",
+      "玉米粉",
+      "cornstarch"
+    ]
+  },
+  {
+    "name": "大豆油",
+    "nameEn": "soybean oil",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物油",
+    "aliases": [
+      "soybean oil",
+      "黃豆油"
+    ]
+  },
+  {
+    "name": "棕櫚油",
+    "nameEn": "palm oil",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物油",
+    "aliases": [
+      "palm oil"
+    ]
+  },
+  {
+    "name": "葵花油",
+    "nameEn": "sunflower oil",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物油",
+    "aliases": [
+      "sunflower oil"
+    ]
+  },
+  {
+    "name": "橄欖油",
+    "nameEn": "olive oil",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物油",
+    "aliases": [
+      "olive oil"
+    ]
+  },
+  {
+    "name": "植物油",
+    "nameEn": "vegetable oil",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物來源",
+    "aliases": [
+      "vegetable oil"
+    ]
+  },
+  {
+    "name": "豬油",
+    "nameEn": "lard",
+    "category": "油脂",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "動物脂肪，非素食",
+    "aliases": [
+      "lard",
+      "豬脂"
+    ]
+  },
+  {
+    "name": "牛油",
+    "nameEn": "butter",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": false,
+    "risk": "high",
+    "notes": "乳製品，非純素",
+    "aliases": [
+      "butter",
+      "奶油"
+    ]
+  },
+  {
+    "name": "奶粉",
+    "nameEn": "milk powder",
+    "category": "乳製品",
+    "vegetarian": true,
+    "vegan": false,
+    "risk": "high",
+    "notes": "乳製品，非純素",
+    "aliases": [
+      "milk powder",
+      "全脂奶粉",
+      "脫脂奶粉"
+    ]
+  },
+  {
+    "name": "乳清粉",
+    "nameEn": "whey powder",
+    "category": "乳製品",
+    "vegetarian": true,
+    "vegan": false,
+    "risk": "high",
+    "notes": "乳製品副產物，非純素",
+    "aliases": [
+      "whey powder",
+      "乳清"
+    ]
+  },
+  {
+    "name": "酪蛋白",
+    "nameEn": "casein",
+    "category": "乳製品",
+    "vegetarian": true,
+    "vegan": false,
+    "risk": "high",
+    "notes": "乳蛋白，非純素",
+    "aliases": [
+      "casein"
+    ]
+  },
+  {
+    "name": "雞蛋",
+    "nameEn": "egg",
+    "category": "蛋類",
+    "vegetarian": true,
+    "vegan": false,
+    "risk": "high",
+    "notes": "蛋類，非純素",
+    "aliases": [
+      "egg",
+      "蛋",
+      "全蛋"
+    ]
+  },
+  {
+    "name": "蛋白",
+    "nameEn": "egg white",
+    "category": "蛋類",
+    "vegetarian": true,
+    "vegan": false,
+    "risk": "high",
+    "notes": "蛋類，非純素",
+    "aliases": [
+      "egg white",
+      "蛋白粉"
+    ]
+  },
+  {
+    "name": "蛋黃",
+    "nameEn": "egg yolk",
+    "category": "蛋類",
+    "vegetarian": true,
+    "vegan": false,
+    "risk": "high",
+    "notes": "蛋類，非純素",
+    "aliases": [
+      "egg yolk"
+    ]
+  },
+  {
+    "name": "明膠",
+    "nameEn": "gelatin",
+    "category": "膠凝劑",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "動物膠原蛋白，非素食",
+    "aliases": [
+      "gelatin",
+      "吉利丁",
+      "gelatine"
+    ]
+  },
+  {
+    "name": "魚膠",
+    "nameEn": "isinglass",
+    "category": "膠凝劑",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "魚類來源，非素食",
+    "aliases": [
+      "isinglass",
+      "魚鰾膠"
+    ]
+  },
+  {
+    "name": "雞肉",
+    "nameEn": "chicken",
+    "category": "肉類",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "動物肉，非素食",
+    "aliases": [
+      "chicken",
+      "雞肉粉"
+    ]
+  },
+  {
+    "name": "豬肉",
+    "nameEn": "pork",
+    "category": "肉類",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "動物肉，非素食",
+    "aliases": [
+      "pork"
+    ]
+  },
+  {
+    "name": "牛肉",
+    "nameEn": "beef",
+    "category": "肉類",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "動物肉，非素食",
+    "aliases": [
+      "beef"
+    ]
+  },
+  {
+    "name": "魚肉",
+    "nameEn": "fish",
+    "category": "肉類",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "動物肉，非素食",
+    "aliases": [
+      "fish"
+    ]
+  },
+  {
+    "name": "蝦",
+    "nameEn": "shrimp",
+    "category": "海鮮",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "海鮮，非素食",
+    "aliases": [
+      "shrimp",
+      "蝦子"
+    ]
+  },
+  {
+    "name": "蟹",
+    "nameEn": "crab",
+    "category": "海鮮",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "海鮮，非素食",
+    "aliases": [
+      "crab"
+    ]
+  },
+  {
+    "name": "蠔油",
+    "nameEn": "oyster sauce",
+    "category": "調味料",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "海鮮提取物，非素食",
+    "aliases": [
+      "oyster sauce"
+    ]
+  },
+  {
+    "name": "魚露",
+    "nameEn": "fish sauce",
+    "category": "調味料",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "魚類提取物，非素食",
+    "aliases": [
+      "fish sauce"
+    ]
+  },
+  {
+    "name": "雞粉",
+    "nameEn": "chicken powder",
+    "category": "調味料",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "雞肉提取物，非素食",
+    "aliases": [
+      "chicken powder",
+      "雞精"
+    ]
+  },
+  {
+    "name": "豬肉精",
+    "nameEn": "pork extract",
+    "category": "調味料",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "豬肉提取物，非素食",
+    "aliases": [
+      "pork extract"
+    ]
+  },
+  {
+    "name": "大豆",
+    "nameEn": "soybean",
+    "category": "豆類",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物蛋白",
+    "aliases": [
+      "soybean",
+      "黃豆"
+    ]
+  },
+  {
+    "name": "豆腐",
+    "nameEn": "tofu",
+    "category": "豆類",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "大豆製品",
+    "aliases": [
+      "tofu"
+    ]
+  },
+  {
+    "name": "豆漿",
+    "nameEn": "soy milk",
+    "category": "豆類",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "大豆製品",
+    "aliases": [
+      "soy milk",
+      "豆奶"
+    ]
+  },
+  {
+    "name": "醬油",
+    "nameEn": "soy sauce",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "大豆發酵",
+    "aliases": [
+      "soy sauce"
+    ]
+  },
+  {
+    "name": "味噌",
+    "nameEn": "miso",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "大豆發酵",
+    "aliases": [
+      "miso"
+    ]
+  },
+  {
+    "name": "番茄",
+    "nameEn": "tomato",
+    "category": "蔬菜",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物",
+    "aliases": [
+      "tomato"
+    ]
+  },
+  {
+    "name": "洋蔥",
+    "nameEn": "onion",
+    "category": "蔬菜",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物",
+    "aliases": [
+      "onion"
+    ]
+  },
+  {
+    "name": "大蒜",
+    "nameEn": "garlic",
+    "category": "蔬菜",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物",
+    "aliases": [
+      "garlic"
+    ]
+  },
+  {
+    "name": "薑",
+    "nameEn": "ginger",
+    "category": "蔬菜",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物",
+    "aliases": [
+      "ginger"
+    ]
+  },
+  {
+    "name": "辣椒",
+    "nameEn": "chili",
+    "category": "蔬菜",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物",
+    "aliases": [
+      "chili",
+      "辣椒粉"
+    ]
+  },
+  {
+    "name": "胡椒",
+    "nameEn": "pepper",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "pepper",
+      "黑胡椒",
+      "白胡椒"
+    ]
+  },
+  {
+    "name": "八角",
+    "nameEn": "star anise",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "star anise"
+    ]
+  },
+  {
+    "name": "肉桂",
+    "nameEn": "cinnamon",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "cinnamon"
+    ]
+  },
+  {
+    "name": "香草",
+    "nameEn": "vanilla",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "vanilla"
+    ]
+  },
+  {
+    "name": "可可",
+    "nameEn": "cocoa",
+    "category": "其他",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物來源",
+    "aliases": [
+      "cocoa",
+      "可可粉"
+    ]
+  },
+  {
+    "name": "巧克力",
+    "nameEn": "chocolate",
+    "category": "其他",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "需確認是否含乳製品",
+    "aliases": [
+      "chocolate"
+    ]
+  },
+  {
+    "name": "蜂蜜",
+    "nameEn": "honey",
+    "category": "甜味劑",
+    "vegetarian": true,
+    "vegan": false,
+    "risk": "high",
+    "notes": "蜜蜂產物，非純素",
+    "aliases": [
+      "honey"
+    ]
+  },
+  {
+    "name": "蜂王乳",
+    "nameEn": "royal jelly",
+    "category": "其他",
+    "vegetarian": true,
+    "vegan": false,
+    "risk": "high",
+    "notes": "蜜蜂產物，非純素",
+    "aliases": [
+      "royal jelly"
+    ]
+  },
+  {
+    "name": "花粉",
+    "nameEn": "pollen",
+    "category": "其他",
+    "vegetarian": true,
+    "vegan": false,
+    "risk": "medium",
+    "notes": "蜜蜂採集，部分純素者不食用",
+    "aliases": [
+      "pollen",
+      "蜂花粉"
+    ]
+  },
+  {
+    "name": "酵母",
+    "nameEn": "yeast",
+    "category": "其他",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "微生物",
+    "aliases": [
+      "yeast",
+      "酵母粉"
+    ]
+  },
+  {
+    "name": "小蘇打",
+    "nameEn": "baking soda",
+    "category": "膨脹劑",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "化學物質",
+    "aliases": [
+      "baking soda",
+      "碳酸氫鈉"
+    ]
+  },
+  {
+    "name": "泡打粉",
+    "nameEn": "baking powder",
+    "category": "膨脹劑",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "化學膨脹劑",
+    "aliases": [
+      "baking powder"
+    ]
+  },
+  {
+    "name": "乳化劑",
+    "nameEn": "emulsifier",
+    "category": "添加物",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "high",
+    "notes": "需確認具體種類與來源",
+    "aliases": [
+      "emulsifier",
+      "emulsifiers"
+    ]
+  },
+  {
+    "name": "香料",
+    "nameEn": "flavor",
+    "category": "添加物",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "需確認具體成分",
+    "aliases": [
+      "flavor",
+      "flavoring",
+      "flavour"
+    ]
+  },
+  {
+    "name": "色素",
+    "nameEn": "color",
+    "category": "添加物",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "需確認具體種類",
+    "aliases": [
+      "color",
+      "colour",
+      "coloring"
+    ]
+  },
+  {
+    "name": "防腐劑",
+    "nameEn": "preservative",
+    "category": "添加物",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "需確認具體種類",
+    "aliases": [
+      "preservative",
+      "preservatives"
+    ]
+  },
+  {
+    "name": "抗氧化劑",
+    "nameEn": "antioxidant",
+    "category": "添加物",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "需確認具體種類",
+    "aliases": [
+      "antioxidant",
+      "antioxidants"
+    ]
+  },
+  {
+    "name": "膠原蛋白",
+    "nameEn": "collagen",
+    "category": "膠凝劑",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "從動物結締組織萃取，非素食",
+    "aliases": [
+      "collagen",
+      "膠原蛋白胜肽"
+    ]
+  },
+  {
+    "name": "阿膠",
+    "nameEn": "ejiao",
+    "category": "膠凝劑",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "由驢皮熬煮提煉的動物膠，非素食",
+    "aliases": [
+      "ejiao"
+    ]
+  },
+  {
+    "name": "甲殼素",
+    "nameEn": "chitosan",
+    "category": "纖維",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "多採自螃蟹外殼，非素食",
+    "aliases": [
+      "chitosan"
+    ]
+  },
+  {
+    "name": "柴魚粉",
+    "nameEn": "bonito powder",
+    "category": "調味料",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "來自柴魚／鰹魚，非素食",
+    "aliases": [
+      "bonito powder",
+      "柴魚"
+    ]
+  },
+  {
+    "name": "凝乳酶",
+    "nameEn": "rennet",
+    "category": "酵素",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "傳統來源為小牛胃的酵素，多數情況非素食",
+    "aliases": [
+      "rennet"
+    ]
+  },
+  {
+    "name": "鈣粉",
+    "nameEn": "calcium",
+    "category": "礦物質",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "可能來自牛骨、魚骨、蛋殼等，需確認是否為骨粉",
+    "aliases": [
+      "calcium"
+    ]
+  },
+  {
+    "name": "維生素D3",
+    "nameEn": "vitamin D3",
+    "category": "維生素",
+    "vegetarian": true,
+    "vegan": false,
+    "risk": "high",
+    "notes": "多數來源為羊毛脂 (lanolin)，純素者通常避免",
+    "aliases": [
+      "vitamin D3",
+      "維他命D3"
+    ]
+  },
+  {
+    "name": "骨頭磷酸鹽",
+    "nameEn": "edible bone phosphate",
+    "category": "添加物",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "抗凝結劑，來源多為動物骨頭，非素食",
+    "aliases": [
+      "bone phosphate"
+    ]
+  },
+  {
+    "name": "蜂蠟",
+    "nameEn": "beeswax",
+    "category": "添加物",
+    "vegetarian": true,
+    "vegan": false,
+    "risk": "high",
+    "notes": "來自蜜蜂的蠟質，文件列為非純素",
+    "aliases": [
+      "beeswax"
+    ]
+  },
+  {
+    "name": "花椒粉",
+    "nameEn": "Sichuan pepper powder",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料，素食可食",
+    "aliases": [
+      "花椒",
+      "Sichuan pepper"
+    ]
+  },
+  {
+    "name": "小茴香",
+    "nameEn": "fennel seed",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "茴香",
+      "fennel"
+    ]
+  },
+  {
+    "name": "孜然",
+    "nameEn": "cumin",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "cumin"
+    ]
+  },
+  {
+    "name": "香菜籽",
+    "nameEn": "coriander seed",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "coriander seed",
+      "胡荽粉"
+    ]
+  },
+  {
+    "name": "香茅",
+    "nameEn": "lemongrass",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "lemongrass",
+      "檸檬草"
+    ]
+  },
+  {
+    "name": "薑黃",
+    "nameEn": "turmeric",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "薑黃粉",
+      "turmeric"
+    ]
+  },
+  {
+    "name": "羅勒",
+    "nameEn": "basil",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "九層塔",
+      "basil"
+    ]
+  },
+  {
+    "name": "迷迭香",
+    "nameEn": "rosemary",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "rosemary"
+    ]
+  },
+  {
+    "name": "百里香",
+    "nameEn": "thyme",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "thyme"
+    ]
+  },
+  {
+    "name": "牛至",
+    "nameEn": "oregano",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "oregano"
+    ]
+  },
+  {
+    "name": "薄荷",
+    "nameEn": "mint",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "mint"
+    ]
+  },
+  {
+    "name": "月桂葉",
+    "nameEn": "bay leaf",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "bay leaf"
+    ]
+  },
+  {
+    "name": "咖哩葉",
+    "nameEn": "curry leaf",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "curry leaf"
+    ]
+  },
+  {
+    "name": "肉豆蔻",
+    "nameEn": "nutmeg",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "nutmeg"
+    ]
+  },
+  {
+    "name": "咖哩粉",
+    "nameEn": "curry powder",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "複合香料，需確認成分",
+    "aliases": [
+      "curry powder"
+    ]
+  },
+  {
+    "name": "五香粉",
+    "nameEn": "five-spice powder",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料混合",
+    "aliases": [
+      "five-spice powder"
+    ]
+  },
+  {
+    "name": "丁香",
+    "nameEn": "clove",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "clove"
+    ]
+  },
+  {
+    "name": "白芷",
+    "nameEn": "angelica root",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "中藥香料",
+    "aliases": [
+      "angelica root"
+    ]
+  },
+  {
+    "name": "甘草",
+    "nameEn": "licorice",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "licorice"
+    ]
+  },
+  {
+    "name": "洋香菜",
+    "nameEn": "parsley",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "巴西利",
+      "parsley"
+    ]
+  },
+  {
+    "name": "紅椒粉",
+    "nameEn": "paprika",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "paprika"
+    ]
+  },
+  {
+    "name": "羅望子",
+    "nameEn": "tamarind",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "tamarind"
+    ]
+  },
+  {
+    "name": "芥末籽",
+    "nameEn": "mustard seed",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "mustard seed"
+    ]
+  },
+  {
+    "name": "荳蔻",
+    "nameEn": "cardamom",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "綠荳蔻",
+      "cardamom"
+    ]
+  },
+  {
+    "name": "蒔蘿",
+    "nameEn": "dill",
+    "category": "香料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物香料",
+    "aliases": [
+      "dill"
+    ]
+  },
+  {
+    "name": "沙茶醬",
+    "nameEn": "satay sauce",
+    "category": "調味料",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "多含蝦米等海鮮，非素食",
+    "aliases": [
+      "沙茶",
+      "satay sauce"
+    ]
+  },
+  {
+    "name": "素蠔油",
+    "nameEn": "vegetarian oyster sauce",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物製成",
+    "aliases": [
+      "vegetarian oyster sauce"
+    ]
+  },
+  {
+    "name": "醬油膏",
+    "nameEn": "thick soy sauce",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "大豆製品",
+    "aliases": [
+      "thick soy sauce"
+    ]
+  },
+  {
+    "name": "烏醋",
+    "nameEn": "black vinegar",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物發酵",
+    "aliases": [
+      "black vinegar"
+    ]
+  },
+  {
+    "name": "白醋",
+    "nameEn": "white vinegar",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物發酵",
+    "aliases": [
+      "white vinegar"
+    ]
+  },
+  {
+    "name": "料理酒",
+    "nameEn": "cooking wine",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "含酒精",
+    "aliases": [
+      "mirin",
+      "cooking wine"
+    ]
+  },
+  {
+    "name": "米酒",
+    "nameEn": "rice wine",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "含酒精",
+    "aliases": [
+      "rice wine"
+    ]
+  },
+  {
+    "name": "味醂",
+    "nameEn": "mirin",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "日本甜味料理酒",
+    "aliases": [
+      "mirin"
+    ]
+  },
+  {
+    "name": "芝麻油",
+    "nameEn": "sesame oil",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物油",
+    "aliases": [
+      "香油",
+      "sesame oil"
+    ]
+  },
+  {
+    "name": "辣椒醬",
+    "nameEn": "chili sauce",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "需確認是否含蒜或魚露",
+    "aliases": [
+      "chili sauce"
+    ]
+  },
+  {
+    "name": "番茄醬",
+    "nameEn": "ketchup",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物製成",
+    "aliases": [
+      "ketchup"
+    ]
+  },
+  {
+    "name": "美乃滋",
+    "nameEn": "mayonnaise",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": false,
+    "risk": "high",
+    "notes": "含蛋，非純素",
+    "aliases": [
+      "蛋黃醬",
+      "mayonnaise"
+    ]
+  },
+  {
+    "name": "烤肉醬",
+    "nameEn": "barbecue sauce",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "需確認成分",
+    "aliases": [
+      "barbecue sauce"
+    ]
+  },
+  {
+    "name": "昆布粉",
+    "nameEn": "kelp powder",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "海藻製成",
+    "aliases": [
+      "kelp powder"
+    ]
+  },
+  {
+    "name": "素高湯粉",
+    "nameEn": "vegetarian stock powder",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物製成",
+    "aliases": [
+      "vegetarian stock powder"
+    ]
+  },
+  {
+    "name": "豆瓣醬",
+    "nameEn": "doubanjiang",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物發酵",
+    "aliases": [
+      "辣豆瓣醬",
+      "broad bean paste"
+    ]
+  },
+  {
+    "name": "甜麵醬",
+    "nameEn": "sweet bean paste",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物發酵",
+    "aliases": [
+      "sweet bean paste"
+    ]
+  },
+  {
+    "name": "黃豆醬",
+    "nameEn": "soybean paste",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "需確認是否含動物成分",
+    "aliases": [
+      "soybean paste"
+    ]
+  },
+  {
+    "name": "芝麻醬",
+    "nameEn": "sesame paste",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物製成",
+    "aliases": [
+      "sesame paste"
+    ]
+  },
+  {
+    "name": "花生醬",
+    "nameEn": "peanut butter",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物製成",
+    "aliases": [
+      "peanut butter"
+    ]
+  },
+  {
+    "name": "糖醋醬",
+    "nameEn": "sweet and sour sauce",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "需確認成分",
+    "aliases": [
+      "sweet and sour sauce"
+    ]
+  },
+  {
+    "name": "黑胡椒醬",
+    "nameEn": "black pepper sauce",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "需確認是否含動物高湯",
+    "aliases": [
+      "black pepper sauce"
+    ]
+  },
+  {
+    "name": "泰式酸辣醬",
+    "nameEn": "Thai sweet chili sauce",
+    "category": "調味料",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "多含魚露，非素食",
+    "aliases": [
+      "Thai sweet chili sauce"
+    ]
+  },
+  {
+    "name": "香菇粉",
+    "nameEn": "shiitake powder",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物製成",
+    "aliases": [
+      "shiitake powder"
+    ]
+  },
+  {
+    "name": "洋蔥粉",
+    "nameEn": "onion powder",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物製成，五辛素者不食",
+    "aliases": [
+      "onion powder"
+    ]
+  },
+  {
+    "name": "蒜粉",
+    "nameEn": "garlic powder",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物製成，五辛素者不食",
+    "aliases": [
+      "garlic powder"
+    ]
+  },
+  {
+    "name": "肉鬆",
+    "nameEn": "pork floss",
+    "category": "加工品",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "肉類製品，非素食",
+    "aliases": [
+      "豬肉鬆",
+      "meat floss"
+    ]
+  },
+  {
+    "name": "魚鬆",
+    "nameEn": "fish floss",
+    "category": "加工品",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "魚類製品，非素食",
+    "aliases": [
+      "fish floss"
+    ]
+  },
+  {
+    "name": "素肉鬆",
+    "nameEn": "vegetarian floss",
+    "category": "加工品",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "需確認是否含蛋奶",
+    "aliases": [
+      "vegetarian floss"
+    ]
+  },
+  {
+    "name": "奶精",
+    "nameEn": "creamer",
+    "category": "加工品",
+    "vegetarian": true,
+    "vegan": false,
+    "risk": "high",
+    "notes": "多含乳製品，非純素",
+    "aliases": [
+      "non-dairy creamer"
+    ]
+  },
+  {
+    "name": "麥芽糊精",
+    "nameEn": "maltodextrin",
+    "category": "甜味劑",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物來源",
+    "aliases": [
+      "maltodextrin"
+    ]
+  },
+  {
+    "name": "葡萄糖",
+    "nameEn": "glucose",
+    "category": "甜味劑",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物來源",
+    "aliases": [
+      "glucose"
+    ]
+  },
+  {
+    "name": "果糖",
+    "nameEn": "fructose",
+    "category": "甜味劑",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物來源",
+    "aliases": [
+      "fructose"
+    ]
+  },
+  {
+    "name": "黑糖",
+    "nameEn": "brown sugar",
+    "category": "甜味劑",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物來源",
+    "aliases": [
+      "brown sugar"
+    ]
+  },
+  {
+    "name": "麥芽糖",
+    "nameEn": "maltose",
+    "category": "甜味劑",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物來源",
+    "aliases": [
+      "麥芽糖漿",
+      "malt syrup"
+    ]
+  },
+  {
+    "name": "豆腐乳",
+    "nameEn": "fermented tofu",
+    "category": "加工品",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "大豆發酵",
+    "aliases": [
+      "fermented tofu"
+    ]
+  },
+  {
+    "name": "豆干",
+    "nameEn": "dried tofu",
+    "category": "加工品",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "需確認滷汁來源",
+    "aliases": [
+      "dried tofu"
+    ]
+  },
+  {
+    "name": "豆皮",
+    "nameEn": "bean curd sheet",
+    "category": "加工品",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "大豆製品",
+    "aliases": [
+      "bean curd sheet"
+    ]
+  },
+  {
+    "name": "素火腿",
+    "nameEn": "vegetarian ham",
+    "category": "加工品",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "需確認是否含蛋奶",
+    "aliases": [
+      "vegetarian ham"
+    ]
+  },
+  {
+    "name": "火腿",
+    "nameEn": "ham",
+    "category": "加工品",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "肉類製品，非素食",
+    "aliases": [
+      "ham slice"
+    ]
+  },
+  {
+    "name": "香腸",
+    "nameEn": "sausage",
+    "category": "加工品",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "肉類製品，非素食",
+    "aliases": [
+      "臘腸",
+      "sausage"
+    ]
+  },
+  {
+    "name": "素香腸",
+    "nameEn": "vegetarian sausage",
+    "category": "加工品",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "需確認是否含蛋",
+    "aliases": [
+      "vegetarian sausage"
+    ]
+  },
+  {
+    "name": "貢丸",
+    "nameEn": "pork meatball",
+    "category": "加工品",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "肉類製品，非素食",
+    "aliases": [
+      "pork meatball"
+    ]
+  },
+  {
+    "name": "素丸子",
+    "nameEn": "vegetarian meatball",
+    "category": "加工品",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "需確認是否含蛋",
+    "aliases": [
+      "vegetarian meatball"
+    ]
+  },
+  {
+    "name": "魚丸",
+    "nameEn": "fish ball",
+    "category": "加工品",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "魚類製品，非素食",
+    "aliases": [
+      "fish ball"
+    ]
+  },
+  {
+    "name": "黑輪",
+    "nameEn": "oden fish cake",
+    "category": "加工品",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "魚漿製品，非素食",
+    "aliases": [
+      "黑輪片",
+      "oden fish cake"
+    ]
+  },
+  {
+    "name": "甜不辣",
+    "nameEn": "tempura",
+    "category": "加工品",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "魚漿製品，非素食",
+    "aliases": [
+      "tempura"
+    ]
+  },
+  {
+    "name": "魚板",
+    "nameEn": "fish cake",
+    "category": "加工品",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "魚漿製品，非素食",
+    "aliases": [
+      "fish cake"
+    ]
+  },
+  {
+    "name": "豆漿粉",
+    "nameEn": "soy milk powder",
+    "category": "加工品",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物製品",
+    "aliases": [
+      "soy milk powder"
+    ]
+  },
+  {
+    "name": "椰漿粉",
+    "nameEn": "coconut milk powder",
+    "category": "加工品",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物製品",
+    "aliases": [
+      "coconut milk powder"
+    ]
+  },
+  {
+    "name": "素柴魚粉",
+    "nameEn": "vegetarian bonito powder",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物製成",
+    "aliases": [
+      "vegetarian bonito powder"
+    ]
+  },
+  {
+    "name": "素雞粉",
+    "nameEn": "vegetarian seasoning powder",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物製成",
+    "aliases": [
+      "vegetarian seasoning powder"
+    ]
+  },
+  {
+    "name": "植物奶油",
+    "nameEn": "margarine",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "需確認是否含乳成分",
+    "aliases": [
+      "margarine"
+    ]
+  },
+  {
+    "name": "起司粉",
+    "nameEn": "cheese powder",
+    "category": "加工品",
+    "vegetarian": true,
+    "vegan": false,
+    "risk": "high",
+    "notes": "乳製品，非純素",
+    "aliases": [
+      "cheese powder"
+    ]
+  },
+  {
+    "name": "素起司粉",
+    "nameEn": "vegan cheese powder",
+    "category": "加工品",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物製成",
+    "aliases": [
+      "vegan cheese powder"
+    ]
+  },
+  {
+    "name": "玉米油",
+    "nameEn": "corn oil",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物油",
+    "aliases": [
+      "corn oil"
+    ]
+  },
+  {
+    "name": "菜籽油",
+    "nameEn": "canola oil",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物油",
+    "aliases": [
+      "rapeseed oil",
+      "canola oil"
+    ]
+  },
+  {
+    "name": "花生油",
+    "nameEn": "peanut oil",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物油",
+    "aliases": [
+      "peanut oil"
+    ]
+  },
+  {
+    "name": "葡萄籽油",
+    "nameEn": "grapeseed oil",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物油",
+    "aliases": [
+      "grapeseed oil"
+    ]
+  },
+  {
+    "name": "苦茶油",
+    "nameEn": "camellia oil",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物油",
+    "aliases": [
+      "山茶花油",
+      "camellia oil"
+    ]
+  },
+  {
+    "name": "米糠油",
+    "nameEn": "rice bran oil",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物油",
+    "aliases": [
+      "rice bran oil"
+    ]
+  },
+  {
+    "name": "椰子油",
+    "nameEn": "coconut oil",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物油",
+    "aliases": [
+      "coconut oil"
+    ]
+  },
+  {
+    "name": "棕櫚仁油",
+    "nameEn": "palm kernel oil",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物油",
+    "aliases": [
+      "palm kernel oil"
+    ]
+  },
+  {
+    "name": "調和油",
+    "nameEn": "blended vegetable oil",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "需確認成分",
+    "aliases": [
+      "blended vegetable oil"
+    ]
+  },
+  {
+    "name": "酥油",
+    "nameEn": "ghee",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": false,
+    "risk": "high",
+    "notes": "乳製品，非純素",
+    "aliases": [
+      "clarified butter"
+    ]
+  },
+  {
+    "name": "牛脂",
+    "nameEn": "beef tallow",
+    "category": "油脂",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "動物脂肪，非素食",
+    "aliases": [
+      "beef tallow"
+    ]
+  },
+  {
+    "name": "雞油",
+    "nameEn": "chicken fat",
+    "category": "油脂",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "動物脂肪，非素食",
+    "aliases": [
+      "chicken fat"
+    ]
+  },
+  {
+    "name": "魚油",
+    "nameEn": "fish oil",
+    "category": "油脂",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "動物脂肪，非素食",
+    "aliases": [
+      "fish oil"
+    ]
+  },
+  {
+    "name": "起酥油",
+    "nameEn": "shortening",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "植物油氫化，含反式脂肪",
+    "aliases": [
+      "shortening"
+    ]
+  },
+  {
+    "name": "可可脂",
+    "nameEn": "cocoa butter",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物油脂",
+    "aliases": [
+      "cocoa butter"
+    ]
+  },
+  {
+    "name": "氫化植物油",
+    "nameEn": "hydrogenated vegetable oil",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "含反式脂肪",
+    "aliases": [
+      "hydrogenated vegetable oil"
+    ]
+  },
+  {
+    "name": "海苔",
+    "nameEn": "nori",
+    "category": "海藻",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物來源",
+    "aliases": [
+      "紫菜",
+      "seaweed",
+      "laver"
+    ]
+  },
+  {
+    "name": "玉米",
+    "nameEn": "corn",
+    "category": "穀物",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物來源",
+    "aliases": [
+      "maize"
+    ]
+  },
+  {
+    "name": "地瓜粉",
+    "nameEn": "sweet potato starch",
+    "category": "澱粉",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物來源",
+    "aliases": [
+      "sweet potato starch"
+    ]
+  },
+  {
+    "name": "馬鈴薯粉",
+    "nameEn": "potato starch",
+    "category": "澱粉",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物來源",
+    "aliases": [
+      "potato starch"
+    ]
+  },
+  {
+    "name": "米粉",
+    "nameEn": "rice flour",
+    "category": "澱粉",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物來源",
+    "aliases": [
+      "rice flour"
+    ]
+  },
+  {
+    "name": "糯米粉",
+    "nameEn": "glutinous rice flour",
+    "category": "澱粉",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物來源",
+    "aliases": [
+      "glutinous rice flour"
+    ]
+  },
+  {
+    "name": "木薯澱粉",
+    "nameEn": "tapioca starch",
+    "category": "澱粉",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物來源",
+    "aliases": [
+      "樹薯澱粉",
+      "tapioca starch"
+    ]
+  },
+  {
+    "name": "蒟蒻",
+    "nameEn": "konjac",
+    "category": "植物",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物來源",
+    "aliases": [
+      "蒟蒻粉",
+      "konjac"
+    ]
+  },
+  {
+    "name": "寒天",
+    "nameEn": "agar",
+    "category": "植物",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "海藻提取",
+    "aliases": [
+      "洋菜",
+      "洋菜粉",
+      "agar powder"
+    ]
+  },
+  {
+    "name": "果膠",
+    "nameEn": "pectin",
+    "category": "植物",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "水果提取",
+    "aliases": [
+      "pectin"
+    ]
+  },
+  {
+    "name": "魷魚絲",
+    "nameEn": "dried squid",
+    "category": "零食",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "海鮮製品，非素食",
+    "aliases": [
+      "dried squid"
+    ]
+  },
+  {
+    "name": "蝦米",
+    "nameEn": "dried shrimp",
+    "category": "海鮮",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "海鮮製品，非素食",
+    "aliases": [
+      "蝦皮",
+      "dried shrimp"
+    ]
+  },
+  {
+    "name": "蝦粉",
+    "nameEn": "shrimp powder",
+    "category": "調味料",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "海鮮製品，非素食",
+    "aliases": [
+      "shrimp powder"
+    ]
+  },
+  {
+    "name": "海鮮粉",
+    "nameEn": "seafood seasoning powder",
+    "category": "調味料",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "海鮮製品，非素食",
+    "aliases": [
+      "seafood seasoning powder"
+    ]
+  },
+  {
+    "name": "牛肉粉",
+    "nameEn": "beef flavor powder",
+    "category": "調味料",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "肉類製品，非素食",
+    "aliases": [
+      "beef flavor powder"
+    ]
+  },
+  {
+    "name": "豬肉粉",
+    "nameEn": "pork flavor powder",
+    "category": "調味料",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "肉類製品，非素食",
+    "aliases": [
+      "pork flavor powder"
+    ]
+  },
+  {
+    "name": "魚粉",
+    "nameEn": "fish powder",
+    "category": "調味料",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "魚類製品，非素食",
+    "aliases": [
+      "fish powder"
+    ]
+  },
+  {
+    "name": "芥花油",
+    "nameEn": "canola oil",
+    "category": "油脂",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物油",
+    "aliases": [
+      "canola oil",
+      "菜籽油"
+    ]
+  },
+  {
+    "name": "高麗菜",
+    "nameEn": "cabbage",
+    "category": "蔬菜",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物",
+    "aliases": [
+      "cabbage",
+      "包心菜",
+      "甘藍"
+    ]
+  },
+  {
+    "name": "檸檬酸",
+    "nameEn": "citric acid",
+    "category": "酸味劑",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "酸味劑，植物來源",
+    "aliases": [
+      "citric acid",
+      "E330"
+    ]
+  },
+  {
+    "name": "L-麩酸鈉",
+    "nameEn": "monosodium glutamate",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "味精，鮮味劑",
+    "aliases": [
+      "MSG",
+      "味精",
+      "monosodium glutamate",
+      "麩酸鈉",
+      "l-麩酸鈉"
+    ]
+  },
+  {
+    "name": "5'-次黃嘌呤核苷磷酸二鈉",
+    "nameEn": "disodium inosinate",
+    "category": "調味料",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "鮮味劑，增味劑，常來自肉類或魚類來源，E631",
+    "aliases": [
+      "disodium inosinate",
+      "E631",
+      "IMP",
+      "5-次黃嘌呤核苷磷酸二鈉",
+      "5'-次黃嚎吟核意磷酸二鈉"
+    ]
+  },
+  {
+    "name": "5'-鳥嘌呤核苷磷酸二鈉",
+    "nameEn": "disodium guanylate",
+    "category": "調味料",
+    "vegetarian": false,
+    "vegan": false,
+    "risk": "high",
+    "notes": "鮮味劑，增味劑，常與動物性來源併用，主要成分可來自魚類，E627",
+    "aliases": [
+      "disodium guanylate",
+      "E627",
+      "GMP",
+      "5-鳥嘌呤核苷磷酸二鈉",
+      "5'-烏嗓吟核昔磷酸二鈉"
+    ]
+  },
+  {
+    "name": "DL-蘋果酸",
+    "nameEn": "DL-malic acid",
+    "category": "酸味劑",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "酸味劑",
+    "aliases": [
+      "malic acid",
+      "E296",
+      "蘋果酸",
+      "dl-蘋果酸"
+    ]
+  },
+  {
+    "name": "水解黃豆蛋白",
+    "nameEn": "hydrolyzed soy protein",
+    "category": "調味料",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "植物蛋白水解物",
+    "aliases": [
+      "hydrolyzed soy protein",
+      "水解大豆蛋白"
+    ]
+  },
+  {
+    "name": "蔗糖素",
+    "nameEn": "sucralose",
+    "category": "甜味劑",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "人工甜味劑",
+    "aliases": [
+      "sucralose",
+      "E955"
+    ]
+  },
+  {
+    "name": "辣椒紅",
+    "nameEn": "paprika extract",
+    "category": "色素",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "天然色素，辣椒提取物",
+    "aliases": [
+      "paprika extract",
+      "E160c",
+      "辣椒紅色素",
+      "辣板紅"
+    ]
+  },
+  {
+    "name": "維生素E",
+    "nameEn": "vitamin E",
+    "category": "抗氧化劑",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "low",
+    "notes": "抗氧化劑，營養強化劑",
+    "aliases": [
+      "vitamin E",
+      "生育酚",
+      "tocopherol",
+      "維生素日"
+    ]
+  }
+]
