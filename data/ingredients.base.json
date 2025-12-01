@@ -460,25 +460,57 @@
   {
     "name": "洋蔥",
     "nameEn": "onion",
-    "category": "蔬菜",
+    "category": "五辛",
     "vegetarian": true,
     "vegan": true,
-    "risk": "low",
-    "notes": "植物",
+    "risk": "medium",
+    "notes": "五辛之一，部分素食者（如佛教素食）避免食用",
     "aliases": [
-      "onion"
+      "onion",
+      "洋葱"
     ]
   },
   {
     "name": "大蒜",
     "nameEn": "garlic",
-    "category": "蔬菜",
+    "category": "五辛",
     "vegetarian": true,
     "vegan": true,
-    "risk": "low",
-    "notes": "植物",
+    "risk": "medium",
+    "notes": "五辛之一，部分素食者（如佛教素食）避免食用",
     "aliases": [
-      "garlic"
+      "garlic",
+      "蒜",
+      "蒜頭"
+    ]
+  },
+  {
+    "name": "韭菜",
+    "nameEn": "chinese chives",
+    "category": "五辛",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "五辛之一，部分素食者（如佛教素食）避免食用",
+    "aliases": [
+      "chives",
+      "韭黃"
+    ]
+  },
+  {
+    "name": "蔥",
+    "nameEn": "scallion",
+    "category": "五辛",
+    "vegetarian": true,
+    "vegan": true,
+    "risk": "medium",
+    "notes": "五辛之一，部分素食者（如佛教素食）避免食用",
+    "aliases": [
+      "green onion",
+      "青蔥",
+      "蔥花",
+      "大蔥",
+      "小蔥"
     ]
   },
   {
@@ -1438,11 +1470,11 @@
   {
     "name": "洋蔥粉",
     "nameEn": "onion powder",
-    "category": "調味料",
+    "category": "五辛",
     "vegetarian": true,
     "vegan": true,
-    "risk": "low",
-    "notes": "植物製成，五辛素者不食",
+    "risk": "medium",
+    "notes": "五辛之一，部分素食者（如佛教素食）避免食用",
     "aliases": [
       "onion powder"
     ]
@@ -1450,13 +1482,14 @@
   {
     "name": "蒜粉",
     "nameEn": "garlic powder",
-    "category": "調味料",
+    "category": "五辛",
     "vegetarian": true,
     "vegan": true,
-    "risk": "low",
-    "notes": "植物製成，五辛素者不食",
+    "risk": "medium",
+    "notes": "五辛之一，部分素食者（如佛教素食）避免食用",
     "aliases": [
-      "garlic powder"
+      "garlic powder",
+      "大蒜粉"
     ]
   },
   {
