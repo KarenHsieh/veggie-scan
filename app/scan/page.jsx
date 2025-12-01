@@ -232,6 +232,19 @@ function ScanPageContent() {
               {/* Text Input */}
               <div className="space-y-4">
                 <label className="block text-sm font-semibold text-gray-700">直接貼上成分文字</label>
+
+                {/* OCR 完成後的檢查提示 */}
+                {uploadedImage && inputText && !isOCRProcessing && (
+                  <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                    <p className="text-xs font-semibold text-blue-900 mb-2">✏️ 請檢查辨識結果：</p>
+                    <ul className="text-xs text-blue-800 space-y-1">
+                      <li>• 檢查是否有因換行導致的斷字（如：「玉米」被斷成「玉」「米」）</li>
+                      <li>• 移除多餘的符號（如：*、#、-）以提高辨識準確度</li>
+                      <li>• 確認所有成分都已正確辨識，可手動補充遺漏的成分</li>
+                    </ul>
+                  </div>
+                )}
+
                 <textarea
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
