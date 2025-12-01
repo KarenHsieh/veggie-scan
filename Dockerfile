@@ -1,5 +1,5 @@
-# 使用 Node.js 18 Alpine 版本
-FROM node:18-alpine AS base
+# 使用 Node.js 20.19.5 Alpine 版本（與本機開發環境一致）
+FROM node:20.19.5-alpine AS base
 
 # 安裝 pnpm
 RUN corepack enable && corepack prepare pnpm@latest --activate
