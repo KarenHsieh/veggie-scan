@@ -2,7 +2,12 @@
 
 import { useState } from "react";
 
-export default function ResultCard({ result, inputText, onReset, nonIngredients = [] }) {
+export default function ResultCard({
+  result,
+  inputText,
+  onReset,
+  nonIngredients = [],
+}) {
   const [copied, setCopied] = useState(false);
 
   const handleCopyText = async () => {
@@ -36,7 +41,11 @@ export default function ResultCard({ result, inputText, onReset, nonIngredients 
                 <li key={idx} className="text-sm">
                   <span className="font-medium">{item.displayName}</span>
                   <span className="text-gray-600"> - {item.reason}</span>
-                  {item.notes && <div className="text-xs text-gray-500 mt-1">備註：{item.notes}</div>}
+                  {item.notes && (
+                    <div className="text-xs text-gray-500 mt-1">
+                      備註：{item.notes}
+                    </div>
+                  )}
                 </li>
               ))}
             </ul>
@@ -46,13 +55,19 @@ export default function ResultCard({ result, inputText, onReset, nonIngredients 
         {/* 需確認成分 */}
         {result.explanation.details.warning.length > 0 && (
           <div className="border-l-4 border-yellow-500 pl-4">
-            <h3 className="font-semibold text-yellow-700 mb-2">⚠️ 需確認成分</h3>
+            <h3 className="font-semibold text-yellow-700 mb-2">
+              ⚠️ 需確認成分
+            </h3>
             <ul className="space-y-2">
               {result.explanation.details.warning.map((item, idx) => (
                 <li key={idx} className="text-sm">
                   <span className="font-medium">{item.displayName}</span>
                   <span className="text-gray-600"> - {item.reason}</span>
-                  {item.notes && <div className="text-xs text-gray-500 mt-1">備註：{item.notes}</div>}
+                  {item.notes && (
+                    <div className="text-xs text-gray-500 mt-1">
+                      備註：{item.notes}
+                    </div>
+                  )}
                 </li>
               ))}
             </ul>
@@ -83,7 +98,11 @@ export default function ResultCard({ result, inputText, onReset, nonIngredients 
                 <li key={idx} className="text-sm">
                   <span className="font-medium">{item.displayName}</span>
                   <span className="text-gray-600"> - {item.reason}</span>
-                  {item.notes && <div className="text-xs text-gray-500 mt-1">備註：{item.notes}</div>}
+                  {item.notes && (
+                    <div className="text-xs text-gray-500 mt-1">
+                      備註：{item.notes}
+                    </div>
+                  )}
                 </li>
               ))}
             </ul>
@@ -92,7 +111,9 @@ export default function ResultCard({ result, inputText, onReset, nonIngredients 
         {/* 其他資訊（推測非成分） */}
         {nonIngredients && nonIngredients.length > 0 && (
           <div className="border-l-4 border-blue-400 pl-4">
-            <h3 className="font-semibold text-blue-700 mb-2">📄 其他資訊（推測非成分）</h3>
+            <h3 className="font-semibold text-blue-700 mb-2">
+              📄 其他資訊（推測非成分）
+            </h3>
             <ul className="space-y-1">
               {nonIngredients.map((text, idx) => (
                 <li key={idx} className="text-sm text-gray-700">
@@ -110,13 +131,13 @@ export default function ResultCard({ result, inputText, onReset, nonIngredients 
           onClick={onReset}
           className="flex-1 px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors"
         >
-          再掃一次
+          重新掃描
         </button>
         <button
           onClick={handleCopyText}
           className="flex-1 px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-lg hover:bg-gray-200 transition-colors"
         >
-          {copied ? "✓ 已複製" : "複製文字"}
+          {copied ? "✓ 已複製" : "複製掃描文字"}
         </button>
       </div>
     </div>
