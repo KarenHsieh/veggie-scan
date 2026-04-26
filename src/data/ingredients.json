@@ -1,0 +1,305 @@
+{
+  "ingredients": [
+    {
+      "id": "gelatin",
+      "canonicalName": "明膠",
+      "category": "non-vegetarian",
+      "description": "動物骨骼/皮膚提煉的膠質",
+      "aliases": ["gelatin", "gelatine", "ゼラチン", "E441", "動物膠", "吉利丁", "魚膠"]
+    },
+    {
+      "id": "lard",
+      "canonicalName": "豬油",
+      "category": "non-vegetarian",
+      "description": "豬脂肪提煉的油脂",
+      "aliases": ["lard", "ラード", "豬脂", "猪油"]
+    },
+    {
+      "id": "beef-tallow",
+      "canonicalName": "牛油",
+      "category": "non-vegetarian",
+      "description": "牛脂肪提煉的油脂",
+      "aliases": ["beef tallow", "tallow", "牛脂", "ヘット", "ビーフタロー"]
+    },
+    {
+      "id": "fish-sauce",
+      "canonicalName": "魚露",
+      "category": "non-vegetarian",
+      "description": "魚類發酵製成的調味料",
+      "aliases": ["fish sauce", "ナンプラー", "魚醬", "蠔油魚露"]
+    },
+    {
+      "id": "bonito-powder",
+      "canonicalName": "柴魚粉",
+      "category": "non-vegetarian",
+      "description": "鰹魚乾燥後磨成的粉末",
+      "aliases": ["bonito powder", "bonito flakes", "かつお節", "鰹節", "かつおぶし", "柴魚", "柴魚片", "鰹魚粉", "だし"]
+    },
+    {
+      "id": "beeswax",
+      "canonicalName": "蜂蠟",
+      "category": "non-vegetarian",
+      "description": "蜜蜂分泌的蠟質",
+      "aliases": ["beeswax", "蜜蝋", "ミツロウ", "E901"]
+    },
+    {
+      "id": "animal-cream",
+      "canonicalName": "動物性鮮奶油",
+      "category": "dairy",
+      "description": "從牛奶中提煉的乳脂肪，奶素可食用",
+      "aliases": ["animal cream", "heavy cream", "whipping cream", "生クリーム", "鮮奶油"]
+    },
+    {
+      "id": "oyster-sauce",
+      "canonicalName": "蠔油",
+      "category": "non-vegetarian",
+      "description": "牡蠣熬煮提煉的調味料",
+      "aliases": ["oyster sauce", "オイスターソース", "耗油", "蚝油"]
+    },
+    {
+      "id": "honey",
+      "canonicalName": "蜂蜜",
+      "category": "non-vegetarian",
+      "description": "蜜蜂採集花蜜製成，部分素食者認為不可食用",
+      "aliases": ["honey", "はちみつ", "蜜", "ハチミツ", "蜂蜜糖漿"]
+    },
+    {
+      "id": "cochineal",
+      "canonicalName": "胭脂蟲紅",
+      "category": "non-vegetarian",
+      "description": "由胭脂蟲提取的紅色色素",
+      "aliases": ["cochineal", "carmine", "E120", "コチニール", "カルミン", "胭脂紅"]
+    },
+    {
+      "id": "shellac",
+      "canonicalName": "蟲膠",
+      "category": "non-vegetarian",
+      "description": "紫膠蟲分泌物，常用於糖衣",
+      "aliases": ["shellac", "E904", "シェラック", "紫膠"]
+    },
+    {
+      "id": "isinglass",
+      "canonicalName": "魚膘膠",
+      "category": "non-vegetarian",
+      "description": "魚鰾製成的膠質",
+      "aliases": ["isinglass", "アイシングラス", "魚鰾膠"]
+    },
+    {
+      "id": "chicken-extract",
+      "canonicalName": "雞精",
+      "category": "non-vegetarian",
+      "description": "雞肉萃取物",
+      "aliases": ["chicken extract", "chicken bouillon", "チキンエキス", "鶏エキス", "雞粉", "雞肉萃取"]
+    },
+    {
+      "id": "pork-extract",
+      "canonicalName": "豬肉萃取物",
+      "category": "non-vegetarian",
+      "description": "豬肉萃取調味料",
+      "aliases": ["pork extract", "ポークエキス", "豚エキス", "豬肉精"]
+    },
+    {
+      "id": "beef-extract",
+      "canonicalName": "牛肉萃取物",
+      "category": "non-vegetarian",
+      "description": "牛肉萃取調味料",
+      "aliases": ["beef extract", "ビーフエキス", "牛エキス", "牛肉精"]
+    },
+    {
+      "id": "shrimp-powder",
+      "canonicalName": "蝦粉",
+      "category": "non-vegetarian",
+      "description": "蝦類乾燥磨成的粉末",
+      "aliases": ["shrimp powder", "エビパウダー", "蝦米", "乾蝦", "蝦皮", "えび"]
+    },
+    {
+      "id": "anchovy",
+      "canonicalName": "鯷魚",
+      "category": "non-vegetarian",
+      "description": "鯷魚或其萃取物",
+      "aliases": ["anchovy", "アンチョビ", "鳳尾魚", "カタクチイワシ"]
+    },
+    {
+      "id": "rennet",
+      "canonicalName": "凝乳酶",
+      "category": "non-vegetarian",
+      "description": "通常來自動物胃部的酵素，用於製作起司",
+      "aliases": ["rennet", "レンネット", "凝乳素"]
+    },
+    {
+      "id": "l-cysteine",
+      "canonicalName": "L-半胱氨酸",
+      "category": "non-vegetarian",
+      "description": "常從動物毛髮或羽毛提取的氨基酸",
+      "aliases": ["L-cysteine", "E920", "L-システイン", "半胱胺酸"]
+    },
+    {
+      "id": "green-onion",
+      "canonicalName": "蔥",
+      "category": "five-pungent",
+      "description": "五辛之一，全素/蛋素/奶素/蛋奶素不可食用",
+      "aliases": ["green onion", "scallion", "spring onion", "leek", "ネギ", "ねぎ", "長ネギ", "青蔥", "大蔥", "紅蔥頭", "蔥花", "蔥段", "蔥末", "紅蔥", "油蔥", "Allium fistulosum"]
+    },
+    {
+      "id": "garlic",
+      "canonicalName": "蒜",
+      "category": "five-pungent",
+      "description": "五辛之一，全素/蛋素/奶素/蛋奶素不可食用",
+      "aliases": ["garlic", "にんにく", "ニンニク", "大蒜", "蒜頭", "蒜末", "蒜泥", "蒜片", "蒜粉", "garlic powder", "ガーリック", "Allium sativum"]
+    },
+    {
+      "id": "chives",
+      "canonicalName": "韭",
+      "category": "five-pungent",
+      "description": "五辛之一，全素/蛋素/奶素/蛋奶素不可食用",
+      "aliases": ["chives", "Chinese chives", "ニラ", "にら", "韭菜", "韭黃", "韭菜花", "Allium tuberosum"]
+    },
+    {
+      "id": "rakkyo",
+      "canonicalName": "蕗蕎",
+      "category": "five-pungent",
+      "description": "五辛之一（薤），全素/蛋素/奶素/蛋奶素不可食用",
+      "aliases": ["rakkyo", "shallot", "らっきょう", "ラッキョウ", "薤", "蕎頭", "Allium chinense"]
+    },
+    {
+      "id": "asafoetida",
+      "canonicalName": "興渠",
+      "category": "five-pungent",
+      "description": "五辛之一（阿魏），全素/蛋素/奶素/蛋奶素不可食用",
+      "aliases": ["asafoetida", "asafetida", "hing", "アサフェティダ", "阿魏", "Ferula assa-foetida"]
+    },
+    {
+      "id": "onion",
+      "canonicalName": "洋蔥",
+      "category": "five-pungent",
+      "description": "蔥屬植物，部分素食者視為五辛",
+      "aliases": ["onion", "玉ねぎ", "タマネギ", "洋葱", "Allium cepa"]
+    },
+    {
+      "id": "egg-whole",
+      "canonicalName": "蛋",
+      "category": "egg",
+      "description": "蛋類製品，蛋素/蛋奶素/五辛素可食用",
+      "aliases": ["egg", "卵", "たまご", "タマゴ", "雞蛋", "鶏卵", "全蛋"]
+    },
+    {
+      "id": "egg-yolk",
+      "canonicalName": "蛋黃",
+      "category": "egg",
+      "description": "蛋的黃色部分，蛋素/蛋奶素/五辛素可食用",
+      "aliases": ["egg yolk", "卵黄", "蛋黄"]
+    },
+    {
+      "id": "egg-white",
+      "canonicalName": "蛋白",
+      "category": "egg",
+      "description": "蛋的白色部分，蛋素/蛋奶素/五辛素可食用",
+      "aliases": ["egg white", "albumen", "卵白", "蛋清"]
+    },
+    {
+      "id": "egg-powder",
+      "canonicalName": "蛋粉",
+      "category": "egg",
+      "description": "蛋乾燥製成的粉末，蛋素/蛋奶素/五辛素可食用",
+      "aliases": ["egg powder", "dried egg", "卵粉"]
+    },
+    {
+      "id": "milk",
+      "canonicalName": "牛奶",
+      "category": "dairy",
+      "description": "乳製品，奶素/蛋奶素/五辛素可食用",
+      "aliases": ["milk", "cow milk", "牛乳", "ミルク", "鮮奶", "鮮乳"]
+    },
+    {
+      "id": "milk-powder",
+      "canonicalName": "奶粉",
+      "category": "dairy",
+      "description": "乳製品，奶素/蛋奶素/五辛素可食用",
+      "aliases": ["milk powder", "powdered milk", "脱脂粉乳", "全脂粉乳", "粉ミルク", "脫脂奶粉", "全脂奶粉"]
+    },
+    {
+      "id": "lactose",
+      "canonicalName": "乳糖",
+      "category": "dairy",
+      "description": "牛奶中的天然糖分，奶素/蛋奶素/五辛素可食用",
+      "aliases": ["lactose", "乳糖", "ラクトース"]
+    },
+    {
+      "id": "whey",
+      "canonicalName": "乳清",
+      "category": "dairy",
+      "description": "奶類衍生物，奶素/蛋奶素/五辛素可食用",
+      "aliases": ["whey", "whey protein", "ホエイ", "乳清蛋白", "乳清粉"]
+    },
+    {
+      "id": "cheese",
+      "canonicalName": "起司",
+      "category": "dairy",
+      "description": "乳製品（注意：部分起司使用動物凝乳酶），奶素/蛋奶素/五辛素可食用",
+      "aliases": ["cheese", "チーズ", "乳酪", "芝士", "起士"]
+    },
+    {
+      "id": "butter",
+      "canonicalName": "奶油",
+      "category": "dairy",
+      "description": "從牛奶脂肪製成，奶素/蛋奶素/五辛素可食用",
+      "aliases": ["butter", "バター", "牛油（乳製品）", "無鹽奶油", "有鹽奶油"]
+    },
+    {
+      "id": "casein",
+      "canonicalName": "酪蛋白",
+      "category": "dairy",
+      "description": "牛奶中的蛋白質，奶素/蛋奶素/五辛素可食用",
+      "aliases": ["casein", "カゼイン", "乳蛋白", "酪素"]
+    },
+    {
+      "id": "spice-vague",
+      "canonicalName": "香料",
+      "category": "ambiguous",
+      "description": "標示模糊，無法判定是否含五辛或動物性成分",
+      "aliases": ["spice", "spices", "香辛料", "スパイス"]
+    },
+    {
+      "id": "emulsifier-vague",
+      "canonicalName": "乳化劑",
+      "category": "ambiguous",
+      "description": "可能為動物性或植物性來源，無法從標示判定",
+      "aliases": ["emulsifier", "乳化剤", "E471", "E472"]
+    },
+    {
+      "id": "natural-color-vague",
+      "canonicalName": "天然色素",
+      "category": "ambiguous",
+      "description": "天然色素來源不明，可能為植物性或動物性（如胭脂蟲紅）",
+      "aliases": ["natural color", "natural coloring", "天然着色料", "天然著色劑"]
+    },
+    {
+      "id": "seasoning-vague",
+      "canonicalName": "調味料",
+      "category": "ambiguous",
+      "description": "調味料成分不明，可能含有動物性成分或五辛",
+      "aliases": ["seasoning", "flavoring", "調味料（アミノ酸等）", "調味劑"]
+    },
+    {
+      "id": "natural-flavor-vague",
+      "canonicalName": "天然香料",
+      "category": "ambiguous",
+      "description": "天然香料來源不明，可能含動物性成分",
+      "aliases": ["natural flavor", "natural flavoring", "天然フレーバー", "天然香精"]
+    },
+    {
+      "id": "glycerin-vague",
+      "canonicalName": "甘油",
+      "category": "ambiguous",
+      "description": "甘油可能為動物性或植物性來源",
+      "aliases": ["glycerin", "glycerine", "glycerol", "グリセリン", "E422"]
+    },
+    {
+      "id": "stearic-acid-vague",
+      "canonicalName": "硬脂酸",
+      "category": "ambiguous",
+      "description": "可能來自動物脂肪或植物油",
+      "aliases": ["stearic acid", "ステアリン酸", "E570"]
+    }
+  ]
+}
