@@ -23,6 +23,6 @@
 
 ## 4. Manual verification on Vercel
 
-- [ ] 4.1 部署到 Vercel 後 curl `/api/analyze`，確認 Vercel proxy 會設置 `x-forwarded-for`（必要時暫時 log resolved IP）；若 header 為 proxy chain 格式（多 IP 以逗號分隔），確認取第一個 entry 即為 client IP
-- [ ] 4.2 Smoke test: 對 `/api/analyze` 連續打 31 次，觀察 429 出現點與 `Retry-After`、回應 body 是否符合 spec；注意 cold start 可能讓同 IP 在多個 instance 間獨立計數，實際 429 觸發點可能晚於 31 次（屬已知 best-effort 行為，符合 design）
-- [ ] 4.3 確認本機 `npm run dev`（NODE_ENV=development）仍完全 bypass，無任何 429
+- [x] 4.1 部署到 Vercel 後 curl `/api/analyze`，確認 Vercel proxy 會設置 `x-forwarded-for`（必要時暫時 log resolved IP）；若 header 為 proxy chain 格式（多 IP 以逗號分隔），確認取第一個 entry 即為 client IP
+- [x] 4.2 Smoke test: 對 `/api/analyze` 連續打 31 次，觀察 429 出現點與 `Retry-After`、回應 body 是否符合 spec；注意 cold start 可能讓同 IP 在多個 instance 間獨立計數，實際 429 觸發點可能晚於 31 次（屬已知 best-effort 行為，符合 design）
+- [x] 4.3 確認本機 `npm run dev`（NODE_ENV=development）仍完全 bypass，無任何 429
