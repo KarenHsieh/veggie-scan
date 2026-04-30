@@ -1,6 +1,6 @@
 ## Context
 
-veggie-scan 是一個 Next.js 應用，部署在 Zeabur 上（長駐 Node process，單一 instance）。三個受保護的 API route 都會觸發後端付費服務：
+veggie-scan 是一個 Next.js 應用，部署在 Vercel 上（serverless functions，每次冷啟動為新 instance，跨 instance 不共享記憶體）。三個受保護的 API route 都會觸發後端付費服務：
 
 ```
 POST /api/ocr      → 影像文字辨識
@@ -38,18 +38,22 @@ POST /api/analyze  → AI 分析（最貴）
 
 以 `Map<ip, { count: number, resetAt: number }>` 作為計數儲存。
 
-**為什麼不用 Redis**：Redis 需要在 Zeabur 上多開一個 service、多一組環境變數、多一個失敗點。對單 instance、MVP 階段的應用，代價超過收益。換 backend 的成本很低（helper 介面固定，內部換實作大概 10 分鐘）。
+**為什麼現在不用 Vercel KV**：Vercel KV 需要在 dashboard 開通、注入額外環境變數、新增 `@vercel/kv` 依賴、多一個外部呼叫的失敗點。對 MVP 階段的應用代價超過收益。換 backend 的成本很低（helper 介面固定，內部換實作大概 10 分鐘）。
 
-**為什麼不用檔案 / SQLite**：每次請求讀寫 disk 慢且醜，SQLite 還要考慮 schema migration。
+**為什麼不用檔案 / SQLite**：每次請求讀寫 disk 慢且醜，SQLite 還要考慮 schema migration；況且 Vercel serverless function 沒有持久化檔案系統。
+
+**Vercel serverless 上的行為（重要 caveat）**：每個 cold start = 新 instance，計數不共享；同一個 IP 可能落在多個 warm instance 之間。實際限額可能比 30/hr 寬鬆 2~5x，但對「防止費用暴衝」場景仍然有效——同 instance 內的連續請求會被擋，單一 IP 持續 hammer 在下一次冷啟動後仍會被擋。完全失效需要每個 request 都剛好命中新的 cold start，實務上不會發生。
+
+接受這個降級的理由：Phase 1 的目標就是「防爆量」而非「精準限額」，degraded 仍能擋住明顯異常。觸發 Phase 2（Vercel KV）的條件因此變嚴——見下方路線圖。
 
 **取捨**：
 - ✅ 零依賴、零設定
+- ❌ 跨 instance 不共享計數（Vercel serverless 本質；接受為 best-effort）
 - ❌ 重啟歸零（可接受，反正不是為了擋惡意攻擊）
-- ❌ 多 instance 會失準（目前單 instance，進入 Phase 2 時處理）
 
 ### 以 IP 作為識別單位
 
-從 request header 抓 `x-forwarded-for`（Zeabur proxy 會設），fallback 到 `x-real-ip`，再 fallback 到 `unknown`（同桶共用）。
+從 request header 抓 `x-forwarded-for`（Vercel proxy 會設；header 可能含多個 IP 構成 proxy chain，取第一個 entry 即為 client IP），fallback 到 `x-real-ip`，再 fallback 到 `unknown`（同桶共用）。
 
 **為什麼不用 cookie / session**：cookie 清掉就繞過，對本場景（防爆量而非防攻擊）沒有額外價值，還要處理 Set-Cookie 的邊界情況。
 
@@ -101,20 +105,23 @@ POST /api/analyze  → AI 分析（最貴）
 - 套用於 `/api/ocr`、`/api/parse`、`/api/analyze`
 - 回傳 429 + `retryAfter`
 
-#### Phase 2 — 改用 Redis（Zeabur）
+#### Phase 2 — 改用 Vercel KV
 
 **進入條件（任一成立即評估升級）：**
 
 - [ ] GA 或伺服器 log 顯示 ≥5% session 撞到 429
-- [ ] Zeabur 需要開到 ≥2 instance（例如水平擴展或藍綠部署）
+- [ ] 觀察到單 IP 規律性繞過上限（實際呼叫量明顯超過設計值，且 cold-start 分布顯示為跨 instance 計數失效）
+- [ ] 單一 warm instance 觀察到的 unique IP > 10,000（代表流量規模已進入另一個量級，跨 instance 失準的影響也跟著放大）
 - [ ] 單次 deploy 間隔內，計數歸零造成實際誤判或使用者投訴
-- [ ] 記憶體 Map size 長期超過 10,000 entry（代表 unique IP 量已經進入另一個量級）
+
+> 註：原本「需要開 ≥2 instance」這條觸發條件已不適用——Vercel 本來就 multi-instance auto-scale，此條件預設成立；但因 Phase 1 已接受 best-effort 降級，不再以此單獨觸發升級。
 
 **動作：**
-1. 在 Zeabur 用一鍵 template 開 Redis service
-2. 加入 `REDIS_URL` 環境變數
-3. 把 `src/lib/rate-limit.ts` 的內部實作從 Map 換成 `INCR + EXPIRE`
-4. 介面不變，三個 route 不需要改動
+1. 在 Vercel dashboard 開通 Vercel KV（Storage tab → Create → KV）
+2. Vercel 自動注入 `KV_REST_API_URL` / `KV_REST_API_TOKEN` 環境變數
+3. `npm install @vercel/kv`
+4. 把 `src/lib/rate-limit.ts` 的內部實作從 Map 換成 `kv.incr` + `kv.expire`
+5. 介面不變，三個 route 不需要改動
 
 #### Phase 3 — 登入系統 + 分層額度
 
@@ -134,8 +141,8 @@ POST /api/analyze  → AI 分析（最貴）
 #### 當前階段狀態
 
 ```
-Phase 1: 🚧 進行中（本 change）
-Phase 2: ⏸  待觸發
+Phase 1: ✅ 完成（in-memory；Vercel 上 best-effort）
+Phase 2: ⏸  待觸發（目標：Vercel KV）
 Phase 3: ⏸  待觸發
 ```
 
@@ -146,6 +153,7 @@ Phase 3: ⏸  待觸發
 - **[Risk] 單 instance 重啟會清空計數** → Mitigation: 可接受，反正不是防攻擊等級；若頻繁 deploy 造成問題則提早觸發 Phase 2
 - **[Risk] 位於 NAT / 公司網路後的多個使用者共用同一 IP 會互相影響** → Mitigation: 額度設寬（30/hr）降低誤傷機率；未來 Phase 3 做登入後即解決
 - **[Risk] 記憶體 Map 若無清理會緩慢成長** → Mitigation: lazy cleanup + size > 1000 時主動掃描
-- **[Risk] Zeabur proxy 若未正確設置 `x-forwarded-for`，所有請求會共用 `unknown` 桶** → Mitigation: 部署後用 curl 實測驗證；若有問題，改讀 Zeabur 特定 header
+- **[Risk] Vercel proxy 若未正確設置 `x-forwarded-for`，所有請求會共用 `unknown` 桶** → Mitigation: 部署後用 curl 實測驗證；若 header 為 proxy chain 格式（多個 IP 以逗號分隔），確認取第一個 entry 即為 client IP
+- **[Risk] Vercel cold start 導致同一 IP 計數在多 instance 間獨立累計，可能突破設計上限** → Mitigation: Phase 1 設計已接受此降級為 best-effort 防爆量；觀察到實際突破比例異常時觸發 Phase 2（Vercel KV）
 - **[Risk] 本機跑 `next build && next start` 時 `NODE_ENV === 'production'` 會啟用限制** → Mitigation: 這是故意的，讓本機也能驗證 production 行為；若造成困擾可改用自訂 env var（例如 `RATE_LIMIT_DISABLED=1`）
 - **[Trade-off] Fixed window 允許邊界 2x 突刺** → 接受，本場景不敏感
