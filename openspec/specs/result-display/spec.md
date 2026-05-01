@@ -572,3 +572,148 @@ tests:
   - tests/ocr/tesseract.test.js
   - src/lib/verdict.test.ts
 -->
+
+---
+### Requirement: Package notice section above verdict
+
+The result page SHALL render a "包裝注意事項" section above the existing verdict banner whenever the analysis result contains at least one notice. The section SHALL be visible regardless of which `dietType` the user has selected. When the result contains zero notices, the section SHALL NOT be rendered (no empty placeholder).
+
+#### Scenario: Notices section appears above the verdict banner
+
+- **WHEN** the result page renders with `notices.length > 0`
+- **THEN** the notice section SHALL be positioned visually above the `<VerdictBanner>` element in the rendered DOM
+
+#### Scenario: Notices section is omitted when empty
+
+- **WHEN** the result page renders with `notices.length === 0`
+- **THEN** no notice section SHALL be rendered in the DOM
+- **AND** the layout SHALL match the previous behavior (no notice region at all)
+
+#### Scenario: Switching vegetarian type does not affect notices
+
+- **GIVEN** a result with at least one notice and the page currently showing `dietType: vegan`
+- **WHEN** the user switches `dietType` to `lacto-ovo` via the type switcher
+- **THEN** the notice section content SHALL remain unchanged
+- **AND** only the verdict banner and ingredient grouping SHALL update to reflect the new diet type
+
+<!-- @trace
+source: add-package-notices
+updated: 2026-05-01
+code:
+  - src/lib/parser.ts
+  - tsconfig.json
+  - src/app/api/analyze/route.ts
+  - src/types/ingredients.ts
+  - src/app/page.tsx
+  - src/components/ResultDisplay.tsx
+  - src/components/NoticeBanner.tsx
+tests:
+  - src/lib/parser.test.ts
+-->
+
+---
+### Requirement: Per-ingredient feedback selection control
+
+Each ingredient row in the categorized ingredient detail list SHALL include a checkbox control that lets the user mark that ingredient as a feedback candidate. The checkbox SHALL be available for ingredients from both `database` and `ai` sources. Toggling a checkbox SHALL only update the local selection state and SHALL NOT trigger any network request.
+
+#### Scenario: Checkbox is rendered for every ingredient
+
+- **WHEN** the result page renders the categorized ingredient detail list with N ingredients
+- **THEN** exactly N checkbox controls SHALL be present, one aligned with each ingredient row
+- **AND** the checkbox SHALL be rendered for both database-sourced and AI-sourced ingredients
+
+#### Scenario: Toggling a checkbox does not call the network
+
+- **WHEN** the user clicks a checkbox to toggle its state
+- **THEN** the system SHALL update the in-memory selection set
+- **AND** SHALL NOT issue any HTTP request
+
+#### Scenario: Selection persists when expanding or collapsing groups
+
+- **WHEN** the user checks an ingredient inside a group, then collapses and re-expands the same group
+- **THEN** the previously checked checkbox SHALL still be checked
+
+
+<!-- @trace
+source: add-feedback-collection
+updated: 2026-05-01
+code:
+  - src/types/ingredients.ts
+  - src/lib/feedback-email.ts
+  - src/components/IngredientGroup.tsx
+  - tsconfig.json
+  - src/components/FeedbackModal.tsx
+  - src/components/ResultDisplay.tsx
+  - README.md
+  - src/app/api/analyze/route.ts
+  - package.json
+  - src/app/api/feedback/route.ts
+  - src/app/page.tsx
+  - src/lib/parser.ts
+  - CLAUDE.md
+  - src/components/NoticeBanner.tsx
+  - src/lib/rate-limit.ts
+  - .env.example
+  - .spectra.yaml
+tests:
+  - src/lib/parser.test.ts
+  - src/lib/rate-limit.test.ts
+  - src/lib/feedback-email.test.ts
+  - src/app/api/feedback/route.test.ts
+-->
+
+---
+### Requirement: Feedback submission entry point
+
+The result page SHALL provide a "回報有誤" button positioned below the categorized ingredient detail list. Clicking the button SHALL open a feedback modal that displays the currently selected ingredients and lets the user finalize and submit the report. The button SHALL always be enabled while the result page is shown, including when zero ingredients are checked.
+
+#### Scenario: Button opens feedback modal
+
+- **WHEN** the user clicks the "回報有誤" button
+- **THEN** the system SHALL open the feedback modal
+- **AND** the modal SHALL pre-populate its selection field with the ingredients currently checked on the result page
+
+#### Scenario: Submitting from the modal sends the report
+
+- **WHEN** the user submits the modal with at least one flagged ingredient or a non-empty user note
+- **THEN** the system SHALL POST the feedback payload as defined by the feedback-collection capability
+- **AND** display a success or failure status to the user based on the response
+
+#### Scenario: Closing the modal preserves checkbox selections
+
+- **WHEN** the user opens the modal and then closes it without submitting
+- **THEN** the checkboxes on the result page SHALL retain the same checked state as before opening the modal
+
+#### Scenario: Successful submission resets the selection
+
+- **WHEN** the modal receives a 200 response from the feedback API
+- **THEN** the system SHALL display a success message
+- **AND** SHALL clear all checkbox selections on the result page after the modal is dismissed
+
+<!-- @trace
+source: add-feedback-collection
+updated: 2026-05-01
+code:
+  - src/types/ingredients.ts
+  - src/lib/feedback-email.ts
+  - src/components/IngredientGroup.tsx
+  - tsconfig.json
+  - src/components/FeedbackModal.tsx
+  - src/components/ResultDisplay.tsx
+  - README.md
+  - src/app/api/analyze/route.ts
+  - package.json
+  - src/app/api/feedback/route.ts
+  - src/app/page.tsx
+  - src/lib/parser.ts
+  - CLAUDE.md
+  - src/components/NoticeBanner.tsx
+  - src/lib/rate-limit.ts
+  - .env.example
+  - .spectra.yaml
+tests:
+  - src/lib/parser.test.ts
+  - src/lib/rate-limit.test.ts
+  - src/lib/feedback-email.test.ts
+  - src/app/api/feedback/route.test.ts
+-->

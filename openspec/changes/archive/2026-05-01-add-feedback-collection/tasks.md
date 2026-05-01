@@ -40,7 +40,7 @@
 
 ## 7. 端到端驗收與文件
 
-- [ ] 7.1 本機以 `NODE_ENV=production` 啟動跑完整流程：拍照 / 輸入 → 結果頁 → 勾選兩筆 → 開 modal → 送出 → 確認 `mooshi21824@gmail.com` 收到信件、內容包含 Flagged 區段與 Full ingredient list
+- [x] 7.1 本機以 `NODE_ENV=production` 啟動跑完整流程：拍照 / 輸入 → 結果頁 → 勾選兩筆 → 開 modal → 送出 → 確認 `mooshi21824@gmail.com` 收到信件、內容包含 Flagged 區段與 Full ingredient list
 - [x] 7.2 驗收 feedback rate-limit：在 production 模式下連續 POST 11 次 `/api/feedback`，第 11 次回 429 且帶 `Retry-After`
 - [x] 7.3 驗收 bucket 隔離：先把 analyze bucket 用滿至 30，再送 1 次 feedback 應成功；反向亦然
 - [x] 7.4 更新 `README.md` 加入 feedback 功能簡介與相關環境變數說明
