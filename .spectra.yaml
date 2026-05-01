@@ -9,11 +9,11 @@
 locale: tw
 
 # Workflow toggles
-tdd: true
+tdd: false
 audit: true
 # parallel_tasks: true
 
-# Claude slash commands (set false to use skills only)
+# Claude slash commands (set true to also generate /spectra:X commands)
 claude_slash_commands: false
 
 # Enable git worktree support for isolated change branches

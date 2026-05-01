@@ -1,11 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import type { ClassifiedIngredient, VegetarianType } from '@/types/ingredients'
 import { computeVerdict } from '@/lib/verdict'
 import VegetarianTypeSwitcher from './VegetarianTypeSwitcher'
 import VerdictBanner from './VerdictBanner'
 import IngredientGroup from './IngredientGroup'
+import FeedbackModal from './FeedbackModal'
 
 interface ResultDisplayProps {
   ingredients: ClassifiedIngredient[]
@@ -14,7 +15,22 @@ interface ResultDisplayProps {
 
 export default function ResultDisplay({ ingredients, onClear }: ResultDisplayProps) {
   const [dietType, setDietType] = useState<VegetarianType>('vegan')
+  const [selectedIndices, setSelectedIndices] = useState<Set<number>>(() => new Set())
+  const [feedbackOpen, setFeedbackOpen] = useState(false)
   const verdict = computeVerdict(ingredients, dietType)
+
+  const toggleIndex = useCallback((index: number) => {
+    setSelectedIndices((prev) => {
+      const next = new Set(prev)
+      if (next.has(index)) next.delete(index)
+      else next.add(index)
+      return next
+    })
+  }, [])
+
+  const handleFeedbackSubmitted = useCallback(() => {
+    setSelectedIndices(new Set())
+  }, [])
 
   return (
     <div className="space-y-6 sm:space-y-8">
@@ -46,7 +62,44 @@ export default function ResultDisplay({ ingredients, onClear }: ResultDisplayPro
 
       <VerdictBanner verdict={verdict} />
 
-      <IngredientGroup ingredients={ingredients} dietType={dietType} />
+      <IngredientGroup
+        ingredients={ingredients}
+        dietType={dietType}
+        selectedIndices={selectedIndices}
+        onToggleIndex={toggleIndex}
+      />
+
+      <div
+        className="rounded-2xl border px-4 sm:px-5 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+        style={{ borderColor: 'var(--color-border-light)', background: 'var(--color-cream)' }}
+      >
+        <div className="text-xs sm:text-sm" style={{ color: 'var(--color-warm-gray)' }}>
+          {selectedIndices.size > 0
+            ? `已勾選 ${selectedIndices.size} 筆可疑成分`
+            : '覺得分類有誤？勾選成分後送出回報'}
+        </div>
+        <button
+          onClick={() => setFeedbackOpen(true)}
+          className="self-start sm:self-auto px-4 py-2 rounded-lg text-sm font-medium border transition-colors duration-150 hover:bg-white"
+          style={{
+            borderColor: 'var(--color-border)',
+            color: 'var(--color-charcoal)',
+            background: 'white',
+          }}
+        >
+          回報有誤
+        </button>
+      </div>
+
+      {feedbackOpen && (
+        <FeedbackModal
+          ingredients={ingredients}
+          dietType={dietType}
+          initialSelectedIndices={selectedIndices}
+          onClose={() => setFeedbackOpen(false)}
+          onSubmitted={handleFeedbackSubmitted}
+        />
+      )}
     </div>
   )
 }

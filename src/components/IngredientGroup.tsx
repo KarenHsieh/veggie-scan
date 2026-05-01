@@ -21,16 +21,30 @@ const GROUPS: GroupConfig[] = [
   { key: 'safe', label: '全素可食用', icon: '✅', categories: ['vegetarian'], collapsible: true, defaultCollapsed: true },
 ]
 
+interface IndexedIngredient {
+  item: ClassifiedIngredient
+  index: number
+}
+
 interface IngredientGroupProps {
   ingredients: ClassifiedIngredient[]
   dietType: VegetarianType
+  selectedIndices: ReadonlySet<number>
+  onToggleIndex: (index: number) => void
 }
 
-export default function IngredientGroup({ ingredients, dietType }: IngredientGroupProps) {
+export default function IngredientGroup({
+  ingredients,
+  dietType,
+  selectedIndices,
+  onToggleIndex,
+}: IngredientGroupProps) {
+  const indexed: IndexedIngredient[] = ingredients.map((item, index) => ({ item, index }))
+
   return (
     <div className="space-y-4 sm:space-y-5">
       {GROUPS.map((group, idx) => {
-        const items = ingredients.filter((i) => group.categories.includes(i.category))
+        const items = indexed.filter(({ item }) => group.categories.includes(item.category))
         if (items.length === 0) return null
 
         return (
@@ -39,6 +53,8 @@ export default function IngredientGroup({ ingredients, dietType }: IngredientGro
               config={group}
               items={items}
               dietType={dietType}
+              selectedIndices={selectedIndices}
+              onToggleIndex={onToggleIndex}
             />
           </div>
         )
@@ -51,10 +67,14 @@ function GroupSection({
   config,
   items,
   dietType,
+  selectedIndices,
+  onToggleIndex,
 }: {
   config: GroupConfig
-  items: ClassifiedIngredient[]
+  items: IndexedIngredient[]
   dietType: VegetarianType
+  selectedIndices: ReadonlySet<number>
+  onToggleIndex: (index: number) => void
 }) {
   const [collapsed, setCollapsed] = useState(config.defaultCollapsed ?? false)
 
@@ -90,19 +110,26 @@ function GroupSection({
       <div
         className="transition-all duration-300 overflow-hidden"
         style={{
-          maxHeight: collapsed ? '0px' : `${items.length * 100}px`,
+          maxHeight: collapsed ? '0px' : `${items.length * 110}px`,
           opacity: collapsed ? 0 : 1,
         }}
       >
         <div style={{ borderTop: '1px solid var(--color-border-light)' }}>
-          {items.map((item, idx) => (
-            <div
-              key={idx}
-              className="px-4 sm:px-5 py-3.5 sm:py-4 flex items-start gap-3"
+          {items.map(({ item, index }, idx) => (
+            <label
+              key={index}
+              className="px-4 sm:px-5 py-3.5 sm:py-4 flex items-start gap-3 cursor-pointer transition-colors duration-150 hover:bg-[var(--color-cream-deep)]"
               style={{
                 borderBottom: idx < items.length - 1 ? '1px solid var(--color-border-light)' : 'none',
               }}
             >
+              <input
+                type="checkbox"
+                aria-label={`回報「${item.originalText}」分類有誤`}
+                checked={selectedIndices.has(index)}
+                onChange={() => onToggleIndex(index)}
+                className="mt-1 w-4 h-4 flex-shrink-0 cursor-pointer accent-[var(--color-sage)]"
+              />
               <div className="flex-1 min-w-0">
                 <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                   <span className="font-medium text-sm sm:text-base" style={{ color: 'var(--color-charcoal)' }}>
@@ -127,7 +154,7 @@ function GroupSection({
                 </p>
               </div>
               <SafetyBadge category={item.category} dietType={dietType} />
-            </div>
+            </label>
           ))}
         </div>
       </div>

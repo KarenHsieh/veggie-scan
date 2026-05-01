@@ -55,3 +55,11 @@ export interface AnalysisResult {
   ingredients: ClassifiedIngredient[]
   verdict: Verdict
 }
+
+export interface FeedbackPayload {
+  ingredients: ClassifiedIngredient[]
+  flaggedIndices: number[]
+  dietType: VegetarianType
+  userNote?: string
+  suggestedCategory?: IngredientCategory
+}

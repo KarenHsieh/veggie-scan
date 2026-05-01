@@ -1,6 +1,10 @@
 /**
- * Phase 1 rate limit: in-memory, IP-based, 30 requests per 1-hour fixed window.
- * Shared across /api/ocr, /api/parse, /api/analyze via the module-level store.
+ * Phase 1 rate limit: in-memory, IP-based, fixed 1-hour window.
+ *
+ * Buckets are independent stores keyed by `(bucket, ip)`. The default bucket
+ * (used when no `bucket` option is provided) is shared by /api/ocr, /api/parse,
+ * and /api/analyze at 30 req/hr/IP. The `feedback` bucket is used by
+ * /api/feedback at 10 req/hr/IP.
  *
  * Upgrade triggers and roadmap live in openspec/changes/add-rate-limit/design.md.
  */
@@ -9,7 +13,11 @@ const WINDOW_MS = 60 * 60 * 1000
 const DEFAULT_MAX_REQUESTS = 30
 const CLEANUP_THRESHOLD = 1000
 
-function getMaxRequests(): number {
+export const DEFAULT_BUCKET = 'shared'
+export const FEEDBACK_BUCKET = 'feedback'
+export const FEEDBACK_MAX_REQUESTS = 10
+
+function getDefaultMaxRequests(): number {
   const raw = process.env.RATE_LIMIT_MAX
   if (!raw) return DEFAULT_MAX_REQUESTS
   const parsed = Number.parseInt(raw, 10)
@@ -21,12 +29,26 @@ export type RateLimitResult =
   | { ok: true }
   | { ok: false; retryAfter: number }
 
+export interface RateLimitOptions {
+  bucket?: string
+  maxRequests?: number
+}
+
 interface Entry {
   count: number
   resetAt: number
 }
 
-const store = new Map<string, Entry>()
+const buckets = new Map<string, Map<string, Entry>>()
+
+function getBucket(name: string): Map<string, Entry> {
+  let bucket = buckets.get(name)
+  if (!bucket) {
+    bucket = new Map()
+    buckets.set(name, bucket)
+  }
+  return bucket
+}
 
 export function resolveClientIp(request: Request): string {
   const forwarded = request.headers.get('x-forwarded-for')
@@ -39,26 +61,37 @@ export function resolveClientIp(request: Request): string {
   return 'unknown'
 }
 
-export function checkRateLimit(request: Request): RateLimitResult {
+export function checkRateLimit(
+  request: Request,
+  options: RateLimitOptions = {}
+): RateLimitResult {
   // Development bypass — completely skip counter state.
   if (process.env.NODE_ENV !== 'production') {
     return { ok: true }
   }
 
+  const bucketName = options.bucket ?? DEFAULT_BUCKET
+  const max = options.maxRequests ?? getDefaultMaxRequests()
+  if (!Number.isFinite(max) || max <= 0) {
+    // Defensive: a misconfigured maxRequests fails closed.
+    return { ok: false, retryAfter: WINDOW_MS / 1000 }
+  }
+
   const ip = resolveClientIp(request)
   const now = Date.now()
-  const existing = store.get(ip)
+  const bucket = getBucket(bucketName)
+  const existing = bucket.get(ip)
 
   // Lazy cleanup: expired entry is replaced with a fresh window.
   if (!existing || existing.resetAt <= now) {
-    if (store.size >= CLEANUP_THRESHOLD) {
-      cleanupExpired(now)
+    if (bucket.size >= CLEANUP_THRESHOLD) {
+      cleanupExpired(bucket, now)
     }
-    store.set(ip, { count: 1, resetAt: now + WINDOW_MS })
+    bucket.set(ip, { count: 1, resetAt: now + WINDOW_MS })
     return { ok: true }
   }
 
-  if (existing.count >= getMaxRequests()) {
+  if (existing.count >= max) {
     return {
       ok: false,
       retryAfter: Math.max(1, Math.ceil((existing.resetAt - now) / 1000)),
@@ -86,17 +119,17 @@ export function buildRateLimitResponse(retryAfter: number): Response {
   )
 }
 
-function cleanupExpired(now: number): void {
-  for (const [key, entry] of store) {
-    if (entry.resetAt <= now) store.delete(key)
+function cleanupExpired(bucket: Map<string, Entry>, now: number): void {
+  for (const [key, entry] of bucket) {
+    if (entry.resetAt <= now) bucket.delete(key)
   }
 }
 
 // --- Test-only helpers ---
 export function __resetRateLimitStore(): void {
-  store.clear()
+  buckets.clear()
 }
 
-export function __getRateLimitStoreSize(): number {
-  return store.size
+export function __getRateLimitStoreSize(bucketName: string = DEFAULT_BUCKET): number {
+  return buckets.get(bucketName)?.size ?? 0
 }

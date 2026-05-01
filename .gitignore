@@ -1,4 +1,5 @@
 .spectra/
+.claude/
 openspec/.vector-search.db*
 
 # dependencies

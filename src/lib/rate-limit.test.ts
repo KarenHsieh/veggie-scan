@@ -3,6 +3,8 @@ import {
   checkRateLimit,
   buildRateLimitResponse,
   resolveClientIp,
+  FEEDBACK_BUCKET,
+  FEEDBACK_MAX_REQUESTS,
   __resetRateLimitStore,
   __getRateLimitStoreSize,
 } from './rate-limit'
@@ -129,6 +131,73 @@ describe('rate-limit', () => {
       const result = checkRateLimit(req)
       expect(result.ok).toBe(true)
       expect(__getRateLimitStoreSize()).toBe(1) // still 1 (replaced, not duplicated)
+    })
+  })
+
+  describe('feedback bucket', () => {
+    const feedbackOpts = { bucket: FEEDBACK_BUCKET, maxRequests: FEEDBACK_MAX_REQUESTS }
+
+    it('allows the first 10 feedback requests within the window', () => {
+      const req = makeRequest({ 'x-forwarded-for': '3.3.3.3' })
+      for (let i = 0; i < FEEDBACK_MAX_REQUESTS; i++) {
+        expect(checkRateLimit(req, feedbackOpts).ok).toBe(true)
+      }
+    })
+
+    it('rejects the 11th feedback request with retryAfter', () => {
+      const req = makeRequest({ 'x-forwarded-for': '3.3.3.3' })
+      for (let i = 0; i < FEEDBACK_MAX_REQUESTS; i++) checkRateLimit(req, feedbackOpts)
+      const result = checkRateLimit(req, feedbackOpts)
+      expect(result.ok).toBe(false)
+      if (!result.ok) {
+        expect(result.retryAfter).toBeGreaterThan(0)
+        expect(result.retryAfter).toBeLessThanOrEqual(3600)
+      }
+    })
+
+    it('does not consume the default (analyze) bucket', () => {
+      const req = makeRequest({ 'x-forwarded-for': '3.3.3.3' })
+      // Exhaust feedback bucket
+      for (let i = 0; i < FEEDBACK_MAX_REQUESTS; i++) checkRateLimit(req, feedbackOpts)
+      expect(checkRateLimit(req, feedbackOpts).ok).toBe(false)
+      // Default bucket still has full quota
+      expect(checkRateLimit(req).ok).toBe(true)
+    })
+
+    it('is not consumed by the default (analyze) bucket', () => {
+      const req = makeRequest({ 'x-forwarded-for': '3.3.3.3' })
+      // Exhaust default bucket
+      for (let i = 0; i < 30; i++) checkRateLimit(req)
+      expect(checkRateLimit(req).ok).toBe(false)
+      // Feedback bucket still has full quota
+      expect(checkRateLimit(req, feedbackOpts).ok).toBe(true)
+    })
+
+    it('resets the feedback counter after the 1-hour window expires', () => {
+      const req = makeRequest({ 'x-forwarded-for': '3.3.3.3' })
+      for (let i = 0; i < FEEDBACK_MAX_REQUESTS; i++) checkRateLimit(req, feedbackOpts)
+      expect(checkRateLimit(req, feedbackOpts).ok).toBe(false)
+
+      vi.advanceTimersByTime(60 * 60 * 1000 + 1)
+
+      expect(checkRateLimit(req, feedbackOpts).ok).toBe(true)
+    })
+
+    it('respects development bypass', () => {
+      vi.stubEnv('NODE_ENV', 'development')
+      const req = makeRequest({ 'x-forwarded-for': '3.3.3.3' })
+      for (let i = 0; i < 100; i++) {
+        expect(checkRateLimit(req, feedbackOpts).ok).toBe(true)
+      }
+      expect(__getRateLimitStoreSize(FEEDBACK_BUCKET)).toBe(0)
+    })
+
+    it('tracks IPs independently within feedback bucket', () => {
+      const a = makeRequest({ 'x-forwarded-for': '3.3.3.3' })
+      const b = makeRequest({ 'x-forwarded-for': '4.4.4.4' })
+      for (let i = 0; i < FEEDBACK_MAX_REQUESTS; i++) checkRateLimit(a, feedbackOpts)
+      expect(checkRateLimit(a, feedbackOpts).ok).toBe(false)
+      expect(checkRateLimit(b, feedbackOpts).ok).toBe(true)
     })
   })
 
