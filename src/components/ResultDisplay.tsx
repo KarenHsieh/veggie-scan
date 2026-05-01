@@ -1,19 +1,21 @@
 'use client'
 
 import { useCallback, useState } from 'react'
-import type { ClassifiedIngredient, VegetarianType } from '@/types/ingredients'
+import type { ClassifiedIngredient, Notice, VegetarianType } from '@/types/ingredients'
 import { computeVerdict } from '@/lib/verdict'
 import VegetarianTypeSwitcher from './VegetarianTypeSwitcher'
 import VerdictBanner from './VerdictBanner'
 import IngredientGroup from './IngredientGroup'
 import FeedbackModal from './FeedbackModal'
+import NoticeBanner from './NoticeBanner'
 
 interface ResultDisplayProps {
   ingredients: ClassifiedIngredient[]
+  notices: Notice[]
   onClear: () => void
 }
 
-export default function ResultDisplay({ ingredients, onClear }: ResultDisplayProps) {
+export default function ResultDisplay({ ingredients, notices, onClear }: ResultDisplayProps) {
   const [dietType, setDietType] = useState<VegetarianType>('vegan')
   const [selectedIndices, setSelectedIndices] = useState<Set<number>>(() => new Set())
   const [feedbackOpen, setFeedbackOpen] = useState(false)
@@ -52,6 +54,8 @@ export default function ResultDisplay({ ingredients, onClear }: ResultDisplayPro
           </svg>
         </button>
       </div>
+
+      <NoticeBanner notices={notices} />
 
       <div>
         <p className="text-xs sm:text-sm mb-2.5" style={{ color: 'var(--color-warm-gray)' }}>

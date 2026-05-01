@@ -51,9 +51,17 @@ export interface Verdict {
   description: string
 }
 
+export type NoticeType = 'allergen' | 'storage' | 'expiration' | 'other'
+
+export interface Notice {
+  type: NoticeType
+  text: string
+}
+
 export interface AnalysisResult {
   ingredients: ClassifiedIngredient[]
   verdict: Verdict
+  notices: Notice[]
 }
 
 export interface FeedbackPayload {

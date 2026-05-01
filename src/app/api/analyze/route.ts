@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { parseIngredients } from '@/lib/parser'
+import { parseLabel } from '@/lib/parser'
 import { classifyIngredients } from '@/lib/classifier'
 import { computeVerdict } from '@/lib/verdict'
 import { checkRateLimit, buildRateLimitResponse } from '@/lib/rate-limit'
@@ -33,12 +33,12 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Pipeline: parse → classify → verdict
-    const parsed = await parseIngredients(text.trim())
+    // Pipeline: parse (ingredients + notices) → classify → verdict
+    const { ingredients: parsed, notices } = await parseLabel(text.trim())
     const classified = await classifyIngredients(parsed)
     const verdict = computeVerdict(classified, dietType)
 
-    return NextResponse.json({ ingredients: classified, verdict })
+    return NextResponse.json({ ingredients: classified, verdict, notices })
   } catch (error) {
     console.error('Analysis error:', error)
 

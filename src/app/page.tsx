@@ -6,7 +6,7 @@ import ImageCropper from '@/components/ImageCropper'
 import TextInput from '@/components/TextInput'
 import OcrReview from '@/components/OcrReview'
 import ResultDisplay from '@/components/ResultDisplay'
-import type { ClassifiedIngredient } from '@/types/ingredients'
+import type { ClassifiedIngredient, Notice } from '@/types/ingredients'
 
 type InputMode = 'image' | 'text'
 type AppState = 'input' | 'cropping' | 'ocr-loading' | 'ocr-review' | 'analyzing' | 'result' | 'error'
@@ -18,6 +18,7 @@ export default function Home() {
   const [ocrText, setOcrText] = useState('')
   const [appState, setAppState] = useState<AppState>('input')
   const [ingredients, setIngredients] = useState<ClassifiedIngredient[]>([])
+  const [notices, setNotices] = useState<Notice[]>([])
   const [error, setError] = useState<string | null>(null)
 
   const switchMode = useCallback((mode: InputMode) => {
@@ -71,6 +72,7 @@ export default function Home() {
       }
       const data = await res.json()
       setIngredients(data.ingredients)
+      setNotices(Array.isArray(data.notices) ? data.notices : [])
       setAppState('result')
     } catch (err) {
       setError(err instanceof Error ? err.message : '成分分析失敗，請重試')
@@ -93,6 +95,7 @@ export default function Home() {
     setImageBase64(null)
     setOcrText('')
     setIngredients([])
+    setNotices([])
     setError(null)
   }, [])
 
@@ -130,7 +133,7 @@ export default function Home() {
         {/* Result State */}
         {appState === 'result' && (
           <div className="animate-fadeInUp">
-            <ResultDisplay ingredients={ingredients} onClear={handleClear} />
+            <ResultDisplay ingredients={ingredients} notices={notices} onClear={handleClear} />
           </div>
         )}
 
