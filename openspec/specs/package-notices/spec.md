@@ -143,37 +143,52 @@ tests:
 -->
 
 ---
-### Requirement: Notice display banner
+### Requirement: Notice display banners
 
-The result page SHALL display a "包裝注意事項" banner above the verdict banner whenever `notices.length > 0`. The banner SHALL group entries by `NoticeType` in the order `allergen` → `storage` → `expiration` → `other`, with localized Traditional Chinese group labels: 過敏原 / 保存方式 / 賞味期限 / 其他注意事項. The banner content SHALL NOT change when the user switches `dietType`.
+The result page SHALL display package notices in two distinct banners with different placement and prominence based on notice type. The allergen banner SHALL be placed visually above the verdict banner with prominent warning styling and the title "過敏原警示". The secondary banner — covering `storage`, `expiration`, and `other` types — SHALL be placed visually below the ingredient detail list with subtle (non-warning) styling and the title "其他包裝資訊". Each banner SHALL render only when at least one notice of its scoped types exists; the corresponding banner SHALL be hidden when its subset is empty. Banner contents SHALL NOT change when the user switches `dietType`. Within each banner, entries SHALL be grouped by `NoticeType` in the fixed order `allergen` → `storage` → `expiration` → `other`, with localized Traditional Chinese group labels (過敏原 / 保存方式 / 賞味期限 / 其他注意事項).
 
-#### Scenario: Banner renders above verdict when notices exist
+#### Scenario: Allergen banner renders above verdict when allergens exist
 
-- **WHEN** the result page renders with at least one notice
-- **THEN** the notice banner SHALL appear visually above the verdict banner
+- **WHEN** the result page renders with at least one notice of type `allergen`
+- **THEN** an allergen banner SHALL appear visually above the verdict banner with prominent warning styling
+- **AND** the banner SHALL contain only the `allergen`-typed entries
 
-#### Scenario: Banner is hidden when no notices
+#### Scenario: Secondary banner renders below ingredient list when non-allergen notices exist
+
+- **WHEN** the result page renders with at least one notice of type `storage`, `expiration`, or `other`
+- **THEN** a secondary banner SHALL appear visually below the ingredient detail list with subtle (non-warning) styling
+- **AND** the banner SHALL contain only the `storage`, `expiration`, and `other` entries — `allergen` entries SHALL NOT appear in the secondary banner
+
+#### Scenario: Both banners hidden when notices array is empty
 
 - **WHEN** the result page renders with `notices.length === 0`
-- **THEN** the notice banner element SHALL NOT be present in the DOM
+- **THEN** neither banner SHALL be present in the DOM
 
-#### Scenario: Banner is independent of vegetarian type switch
+#### Scenario: Allergen-only notices hide the secondary banner
 
-- **GIVEN** the result page shows a notice banner with one allergen entry
-- **WHEN** the user changes the `dietType` from `vegan` to `lacto-ovo`
-- **THEN** the notice banner content SHALL remain unchanged
+- **GIVEN** the response contains notices of type `allergen` only
+- **WHEN** the result page renders
+- **THEN** the allergen banner SHALL render above the verdict
+- **AND** the secondary banner SHALL NOT be present in the DOM
 
-#### Scenario: Groups display in fixed order
+#### Scenario: Non-allergen-only notices hide the allergen banner
 
-- **GIVEN** the response contains notices `[{type: "other", ...}, {type: "allergen", ...}, {type: "expiration", ...}]`
-- **WHEN** the banner renders
-- **THEN** the visual order of groups SHALL be allergen, expiration, other (storage is omitted because no entry of that type exists)
+- **GIVEN** the response contains notices of types `storage`, `expiration`, or `other` only (no `allergen`)
+- **WHEN** the result page renders
+- **THEN** the secondary banner SHALL render below the ingredient list
+- **AND** the allergen banner SHALL NOT be present in the DOM
 
-##### Example: group ordering with mixed types
+#### Scenario: Banners are independent of vegetarian type switch
 
-- **GIVEN** notices with types in arrival order: `[other, allergen, storage, expiration, allergen]`
-- **WHEN** the banner renders
-- **THEN** the rendered group order SHALL be: 過敏原 (2 entries) → 保存方式 (1 entry) → 賞味期限 (1 entry) → 其他注意事項 (1 entry)
+- **GIVEN** the result page shows banners with notices of various types
+- **WHEN** the user changes `dietType` from `vegan` to `lacto-ovo`
+- **THEN** the contents of both banners SHALL remain unchanged
+
+##### Example: group ordering within the secondary banner
+
+- **GIVEN** notices with types in arrival order: `[other, storage, expiration, expiration, other]`
+- **WHEN** the secondary banner renders
+- **THEN** the rendered group order SHALL be: 保存方式 (1 entry) → 賞味期限 (2 entries) → 其他注意事項 (2 entries)
 
 
 <!-- @trace

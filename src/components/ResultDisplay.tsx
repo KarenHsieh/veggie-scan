@@ -55,7 +55,7 @@ export default function ResultDisplay({ ingredients, notices, onClear }: ResultD
         </button>
       </div>
 
-      <NoticeBanner notices={notices} />
+      <NoticeBanner notices={notices} types={['allergen']} title="過敏原警示" />
 
       <div>
         <p className="text-xs sm:text-sm mb-2.5" style={{ color: 'var(--color-warm-gray)' }}>
@@ -71,6 +71,14 @@ export default function ResultDisplay({ ingredients, notices, onClear }: ResultD
         dietType={dietType}
         selectedIndices={selectedIndices}
         onToggleIndex={toggleIndex}
+      />
+
+      <NoticeBanner
+        notices={notices}
+        types={['storage', 'expiration', 'other']}
+        title="其他包裝資訊"
+        headerIcon="ℹ️"
+        subtle
       />
 
       <div

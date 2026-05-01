@@ -574,26 +574,34 @@ tests:
 -->
 
 ---
-### Requirement: Package notice section above verdict
+### Requirement: Package notice placement (split by type)
 
-The result page SHALL render a "包裝注意事項" section above the existing verdict banner whenever the analysis result contains at least one notice. The section SHALL be visible regardless of which `dietType` the user has selected. When the result contains zero notices, the section SHALL NOT be rendered (no empty placeholder).
+The result page SHALL render package notices in two distinct sections with different placement based on notice type. Allergen notices SHALL appear in a prominent warning-styled banner positioned above the verdict banner. Notices of type `storage`, `expiration`, and `other` SHALL appear in a subtler banner positioned below the ingredient detail list. Each section SHALL be hidden when no notices of its scoped types exist. Both sections SHALL be unaffected by the user's `dietType` selection.
 
-#### Scenario: Notices section appears above the verdict banner
+#### Scenario: Allergen section appears above the verdict banner
 
-- **WHEN** the result page renders with `notices.length > 0`
-- **THEN** the notice section SHALL be positioned visually above the `<VerdictBanner>` element in the rendered DOM
+- **WHEN** the result page renders with at least one allergen notice
+- **THEN** the allergen section SHALL be positioned visually above the `<VerdictBanner>` element in the rendered DOM with prominent warning styling
 
-#### Scenario: Notices section is omitted when empty
+#### Scenario: Other-notices section appears below the ingredient list
 
-- **WHEN** the result page renders with `notices.length === 0`
-- **THEN** no notice section SHALL be rendered in the DOM
-- **AND** the layout SHALL match the previous behavior (no notice region at all)
+- **WHEN** the result page renders with at least one notice of type `storage`, `expiration`, or `other`
+- **THEN** the other-notices section SHALL be positioned visually below the ingredient detail list with subtle (non-warning) styling
 
-#### Scenario: Switching vegetarian type does not affect notices
+#### Scenario: Section is omitted when its type subset is empty
 
-- **GIVEN** a result with at least one notice and the page currently showing `dietType: vegan`
+- **WHEN** the result page renders with no allergen notices
+- **THEN** the allergen section SHALL NOT be present in the DOM
+- **AND** the verdict banner SHALL remain visually preceded only by the result header and diet-type switcher
+
+- **WHEN** the result page renders with no `storage`, `expiration`, or `other` notices
+- **THEN** the other-notices section SHALL NOT be present in the DOM
+
+#### Scenario: Switching vegetarian type does not affect either section
+
+- **GIVEN** a result with notices of mixed types and the page currently showing `dietType: vegan`
 - **WHEN** the user switches `dietType` to `lacto-ovo` via the type switcher
-- **THEN** the notice section content SHALL remain unchanged
+- **THEN** the contents of both notice sections SHALL remain unchanged
 - **AND** only the verdict banner and ingredient grouping SHALL update to reflect the new diet type
 
 <!-- @trace
